@@ -1,0 +1,20 @@
+img{
+    max-height: 140px;
+}
+
+.example-card{
+    margin: 5px ;
+    background-color: rgb(165, 164, 165);
+    max-width: 250px;
+    min-height: 240px;
+}
+
+.progreso svg{
+    max-width:20px ;
+}
+.image{
+    text-align: center;
+}
+.letra{
+    font-size: 17px;
+}

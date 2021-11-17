@@ -1,0 +1,36 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: aliceblue;
+  }
+  
+  .example-radio-group {
+    display: block;
+    border: 1px solid rgb(179, 179, 179);
+    margin: 20px;
+    padding: 10px;
+  }
+  .side-menu{
+      min-width: 300px;
+  }
+  .side-menu h1{
+      text-align: center;
+      font-weight: bold;
+  }
+  .icon-menu{
+      padding-right: 30px;
+  }
+  a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: #f0f0f0;
+    line-height: 20px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+

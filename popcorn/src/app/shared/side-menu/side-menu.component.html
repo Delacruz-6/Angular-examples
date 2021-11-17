@@ -1,0 +1,32 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push" class="side-menu">
+      <h1>Menu</h1>
+      <mat-list role="list">
+        <mat-list-item role="listitem"><a [routerLink]="['/movies-popular']"routerLinkActive="router-link-active"><mat-icon class="icon-menu">movie_filter</mat-icon>Peliculas</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/people-popular']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">person</mat-icon>Personas</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/profile']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">settings_suggest</mat-icon>Opciones</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"><mat-icon class="sidenav-icon">logout</mat-icon> Salir</mat-list-item>
+    </mat-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+
+        <button mat-button (click)="sidenav.toggle()">
+            <mat-icon >menu</mat-icon>
+        </button>
+        <span>PopCorn</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+

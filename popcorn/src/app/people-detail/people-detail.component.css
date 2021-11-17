@@ -1,0 +1,13 @@
+img{
+  max-height: 540px;
+}
+.example-card{
+  margin-top: 30px;
+  width: 400px;
+  text-align: center;
+}
+.contenedor{
+  text-align: center;
+  padding: 0 auto;
+  margin-left: 200px;
+}

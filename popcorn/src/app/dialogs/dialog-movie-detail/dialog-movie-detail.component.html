@@ -1,0 +1,30 @@
+
+        <mat-card class="example-card" >
+            <mat-card-title-group >
+              <mat-card-title class="title">{{movie.title}}</mat-card-title>
+            </mat-card-title-group>
+            
+            <mat-card-content class="flex-container">     
+              <hr>
+              <div class="centrado">
+                <img [src]="getMovieImagenUrl(movie)" >
+              </div> 
+              <hr>
+            </mat-card-content>
+            <mat-card-title-group >
+              <mat-card-subtitle class="subtitle">
+                {{"Puntuación: "+movie.vote_average}} 
+                <br>
+                {{"Nº Votos: "+movie.vote_count}}  
+                <br>
+                {{"Popularidad: "+movie.popularity}}
+                <br>
+                {{"Fecha lanzamiento: "+movie.release_date}}
+                <br>
+                {{"Descripción: "+movie.overview}}
+
+
+              </mat-card-subtitle>
+            </mat-card-title-group>
+          </mat-card>
+

@@ -1,0 +1,25 @@
+<div fxLayout="row">
+  <div  fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-card class="example-card" >
+      <mat-card-title-group >
+        <mat-card-title class="letra">{{"Nombre: "+person?.name}}</mat-card-title>
+        <mat-card-subtitle >
+          <div class="image">
+              <img [src]="getPeopleImagenUrl(person)" >
+          </div>
+        </mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content class="flex-container">
+        <hr>
+        {{"Departamento: "+person?.known_for_department}}
+        <br>
+        {{"Popularidad: "+person?.popularity}}
+        <br>
+        {{"Datos: "+person?.known_for}}
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+</div>
+

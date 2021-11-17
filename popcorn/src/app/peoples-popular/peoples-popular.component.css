@@ -1,0 +1,9 @@
+.scrol-container{
+    height: 300px;
+    overflow: auto;
+    display: flex;
+}
+.people-item{
+    min-width: 200px;
+}
+
