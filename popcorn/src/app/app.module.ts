@@ -40,7 +40,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       "backgroundColor": "#fffafa",
       "backgroundStrokeWidth": 0,
       "backgroundPadding": -11,
-      "radius": 28,
+      "radius": 25,
       "space": 4,
       "toFixed": 0,
       "unitsFontWeight": "800",

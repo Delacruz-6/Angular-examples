@@ -1,20 +1,21 @@
 
-  <mat-card  >
-    <mat-card-title-group >
-      <mat-card-title class="title">{{movie?.title}}</mat-card-title>
-    </mat-card-title-group>
-    <mat-card-content class="flex-container">
-      <img [src]="getMovieImagenUrl(movie)"  >
+  <mat-card class="movie-card" >
+    <mat-card-content >
+      <div class="movie-image" (click)="openMovieDetailDialog(movie?.id)">
+        <img [src]="getMovieImagenUrl(movie)"   height="200px" width="100%">
+      </div>
+      <div class="circulo">
+        <circle-progress [percent]="movie.vote_average*10"></circle-progress>
+      </div>
+      <h3 class="title"><strong>{{movie?.title}}</strong></h3>
+      <p class="subtitle">{{movie?.overview}}</p>
     </mat-card-content>
-    <div class="centrado">
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-
+    <div fxLayout="row" fxLayoutAlign="space-evenly " >
       <button mat-raised-button  (click)="openMovieDetailDialog(movie?.id)">Ver mas</button>
       <button mat-icon-button> <mat-icon >favorite_border</mat-icon></button>
       <button mat-icon-button> <mat-icon >playlist_add</mat-icon></button>
     </div>
-    <circle-progress [percent]="movie.vote_average*10"></circle-progress>
+
   </mat-card>
 
 

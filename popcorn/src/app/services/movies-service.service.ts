@@ -14,7 +14,7 @@ export class MoviesServiceService {
 
 
 
-  getMoviesPopularList(limit : number): Observable<MoviesPopularResponse>{
+  getMoviesPopularList(): Observable<MoviesPopularResponse>{
     return this.http.get<MoviesPopularResponse>(`${environment.apiBaseUrl}/movie/popular?api_key=${environment.apiKey}&language=${environment.LANG}`);
   }
 
@@ -23,5 +23,5 @@ export class MoviesServiceService {
   }
 
 
-  
+
 }

@@ -1,25 +1,37 @@
 
-img {
-    border-radius: 10px;
+.movie-image img {
+    transition: transform .5s ease;
     object-fit: cover;
-    width: 220px;
 }
-.progreso svg{
-    max-width:20px ;
+.movie-image img:hover{
+  transform: scale(1.3);
+  transition: transform .5s ease;
 }
-.mat-icon {
- font-size: 35px;
+
+.movie-image:hover{
+  cursor: pointer;
 }
-.title{
+
+.title, .subtitle{
   width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-circle-progress{
+.circulo{
     position:absolute;
-    margin-top:-380px;
+    margin-top:-200px;
+}
+.movie-image{
+  width: 100%;
+  overflow: hidden;
+  height: 200px;
+  border-radius: 10px;
+}
+.mat-card{
+  background-color: rgb(255, 255, 255);
+  color: black;
 }
 
 

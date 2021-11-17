@@ -1,6 +1,6 @@
 
-<div fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="10px grid" >
-  <app-movies-item class="contenedor" *ngFor="let movie of moviesPopularList; let i = index" [movie]="movie"> </app-movies-item>
+<div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="center start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
+  <app-movies-item class="contenedor" fxFLex="15" *ngFor="let movie of moviesPopularList; let i = index" [movie]="movie"> </app-movies-item>
 </div>
 
 
