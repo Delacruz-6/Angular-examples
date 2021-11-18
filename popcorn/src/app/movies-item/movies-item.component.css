@@ -29,7 +29,7 @@
   height: 200px;
   border-radius: 10px;
 }
-.mat-card{
+.mat-card, button{
   background-color: rgb(255, 255, 255);
   color: black;
 }

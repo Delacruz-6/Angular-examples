@@ -12,8 +12,8 @@
     </mat-card-content>
     <div fxLayout="row" fxLayoutAlign="space-evenly " >
       <button mat-raised-button  (click)="openMovieDetailDialog(movie?.id)">Ver mas</button>
-      <button mat-icon-button> <mat-icon >favorite_border</mat-icon></button>
-      <button mat-icon-button> <mat-icon >playlist_add</mat-icon></button>
+      <button mat-icon-button > <mat-icon >favorite_border</mat-icon></button>
+      <button mat-icon-button (click)="openMovieAddDialog(movie?.id)"> <mat-icon >playlist_add</mat-icon></button>
     </div>
 
   </mat-card>

@@ -1,0 +1,16 @@
+<h3>{{movie?.id}}
+  {{movie?.title}} </h3>
+
+<mat-form-field   >
+  <div >
+      <mat-label>Lista de peliculas</mat-label>
+      <mat-select [(ngModel)]="selectedListId"> <!-- [(ngModel)]="idLists" -->
+          <mat-option *ngFor="let list of Lists" [value]="list.id">{{list?.name}}</mat-option>
+      </mat-select>
+  </div>
+</mat-form-field>
+<div >
+  <button  mat-raised-button color="accent" type="button" >Guardar</button> <!-- (click)="onSubmit()" -->
+</div>
+
+

@@ -16,6 +16,7 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogMovieAddComponent } from './dialogs/dialog-movie-add/dialog-movie-add.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PeopleItemComponent,
     SideMenuComponent,
     DialogMovieDetailComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    DialogMovieAddComponent
   ],
   imports: [
     BrowserModule,

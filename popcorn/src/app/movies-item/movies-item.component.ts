@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { DialogMovieAddComponent } from '../dialogs/dialog-movie-add/dialog-movie-add.component';
 import { DialogMovieDetailComponent } from '../dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { Movie } from '../interfaces/movies-list.interface';
 import { MoviesServiceService } from '../services/movies-service.service';
@@ -18,15 +19,22 @@ export class MoviesItemComponent implements OnInit {
   constructor(private route: ActivatedRoute, private moviesService : MoviesServiceService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
- 
-  } 
+
+  }
   getMovieImagenUrl(movie: Movie){
-    return `${environment.imageBaseURL}/${movie.poster_path}`
+    return `${environment.imageBaseURL}/${movie?.poster_path}`
   }
   openMovieDetailDialog(id : number |undefined){
     this.dialog.open(DialogMovieDetailComponent, {
       height: '660px',
       width: '800px',
+      data: { movieId: this.movie?.id }
+    });
+  }
+  openMovieAddDialog(id : number |undefined){
+    this.dialog.open(DialogMovieAddComponent, {
+      height: '400px',
+      width: '500px',
       data: { movieId: this.movie?.id }
     });
   }
