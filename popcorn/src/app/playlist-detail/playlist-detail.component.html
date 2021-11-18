@@ -1,0 +1,20 @@
+<div *ngFor="let movie of list" class="contenedor">
+  <mat-card class="movie-card" >
+    <mat-card-content >
+      <div class="movie-image" > <!--  (click)="openMovieDetailDialog(movie?.id)"-->
+        <img [src]="getMovieImagenUrl(movie)"   height="200px" width="100%">
+      </div>
+      <div class="circulo">
+        <circle-progress [percent]="movie.vote_average*10"></circle-progress>
+      </div>
+      <h3 class="title"><strong>{{movie?.title}}</strong></h3>
+      <p class="subtitle">{{movie?.overview}}</p>
+    </mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="space-evenly " >
+      <button mat-raised-button  >Ver mas</button> <!--  (click)="openMovieDetailDialog(movie?.id)"-->
+      <button mat-icon-button > <mat-icon >favorite_border</mat-icon></button>
+      <button mat-icon-button > <mat-icon >playlist_add</mat-icon></button>  <!-- (click)="openMovieAddDialog(movie?.id)" -->
+    </div>
+  </mat-card>
+</div>
+

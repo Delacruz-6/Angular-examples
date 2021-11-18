@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>{{listInput?.name}}</mat-card-title>
+  <mat-card-subtitle>{{listInput?.id}}</mat-card-subtitle>
+  <mat-card-content>
+    {{listInput?.description}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="['/playlist-detail', listInput?.id]" color="primary">Ver peliculas</button>
+  </mat-card-actions>
+</mat-card>

@@ -17,6 +17,11 @@ import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogMovieAddComponent } from './dialogs/dialog-movie-add/dialog-movie-add.component';
+import { FormsModule } from '@angular/forms';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { PlaylistListComponent } from './playlist-list/playlist-list.component';
+import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
+import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
 
 
 @NgModule({
@@ -29,7 +34,11 @@ import { DialogMovieAddComponent } from './dialogs/dialog-movie-add/dialog-movie
     SideMenuComponent,
     DialogMovieDetailComponent,
     PeopleDetailComponent,
-    DialogMovieAddComponent
+    DialogMovieAddComponent,
+    CuentaComponent,
+    PlaylistListComponent,
+    PlaylistDetailComponent,
+    PlaylistItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +47,7 @@ import { DialogMovieAddComponent } from './dialogs/dialog-movie-add/dialog-movie
     MaterialImportsModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       "backgroundColor": "#fffafa",
       "backgroundStrokeWidth": 0,

@@ -1,0 +1,15 @@
+.mat-card-title, .mat-card-subtitle{
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.mat-card, button{
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.mat-card-actions{
+  text-align: center;
+}

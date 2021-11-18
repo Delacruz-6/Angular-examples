@@ -19,7 +19,7 @@ export class DialogMovieAddComponent implements OnInit {
   movie!: MovieResponse;
   list !: List;
   Lists !: List[];
-  selectedListId!: number;
+  selectedListId!: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogMovieAddData,
@@ -47,7 +47,7 @@ export class DialogMovieAddComponent implements OnInit {
 
 
   onSubmit(){
-    this.listService.addPeliculaToLista(this.data.movieId, this.selectedListId).subscribe();
+    this.listService.addPeliculaToLista( this.selectedListId, this.data.movieId).subscribe();
     window.location.reload();
   }
 
