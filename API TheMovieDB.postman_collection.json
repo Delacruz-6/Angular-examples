@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "909dd3cb-dd6b-4386-aca2-476e46caed04",
+		"name": "API TheMovieDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "Popular-Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/movie/popular?api_key={{API_KEY}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"movie",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/movie/3/lists?api_key={{API_KEY}}&language=es-ES&page=1",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"movie",
+								"3",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "es-ES"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie-Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/movie/56348?api_key={{API_KEY}}&language=es-ES",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"movie",
+								"56348"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "es-ES"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PEOPLE",
+			"item": [
+				{
+					"name": "detail-people",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/person/56348?api_key={{API_KEY}}&language=es-ES",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"person",
+								"56348"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "es-ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular-people",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{API_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "api_key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/person/popular?language={{LANG}}&page=1",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"person",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Crear token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/authentication/token/new?api_key={{API_KEY}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"authentication",
+								"token",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST sesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"request_token\": \"4fa9a682d76daa422cbd7c11cbf00939cef10655\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/authentication/session/new?api_key={{API_KEY}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"authentication",
+								"session",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Certificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.themoviedb.org/authenticate/--token--",
+							"protocol": "https",
+							"host": [
+								"www",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"authenticate",
+								"--token--"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lists",
+			"item": [
+				{
+					"name": "Create lit",
+					"request": {
+						"auth": {
+							"type": "hawk",
+							"hawk": [
+								{
+									"key": "algorithm",
+									"value": "sha256",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Que dise\",\r\n  \"description\": \"Just an awesome list.\",\r\n  \"language\": \"es\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/list?api_key={{API_KEY}}&session_id={{session_id}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"list"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /list/{list_id}/add_item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "GET /account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/account?api_key={{API_KEY}}&session_id={{session_id}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"account"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /account/{account_id}/lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/account/{{account_id}}/lists?api_key={{API_KEY}}&session_id={{session_id}}",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"account",
+								"{{account_id}}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,811 @@
+{
+	"info": {
+		"_postman_id": "0d9256f9-26ca-405c-a6fb-f9096675ef96",
+		"name": "TheMovieDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PEOPLE",
+			"item": [
+				{
+					"name": "Popular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/person/popular?language={{LANG}}&page=1",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"person",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOVIES",
+			"item": [
+				{
+					"name": "Popular",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if(jsonData.results.length > 0) {",
+									"pm.collectionVariables.set(\"first_movie_id\", jsonData.results[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_URL}}/movie/popular",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"movie",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rate Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": 8.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{first_movie_id}}/rating?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{first_movie_id}}",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Rating",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/{{first_movie_id}}/rating?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"{{first_movie_id}}",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTHENTICATION",
+			"item": [
+				{
+					"name": "STEP 1: Get request token ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"request_token\", jsonData.request_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/authentication/token/new?api_key={{API_KEY}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"authentication",
+								"token",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STEP 2: Get the user to authorize the request token",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "authUrl",
+									"value": "https://www.themoviedb.org/authenticate/{{request_token}}?redirect_to=https://oauth.pstmn.io/v1/browser-callback",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "{{request_token}}",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/browser-callback",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.themoviedb.org/authenticate/{{request_token}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"authenticate",
+								"{{request_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STEP 3: Create a new session_id with the athorized request token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"session_id\", jsonData.session_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request_token\": \"{{request_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key={{API_KEY}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"authentication",
+								"session",
+								"new"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ACCOUNT",
+			"item": [
+				{
+					"name": "Get Created Lists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"if(jsonData.results.length > 0) {",
+									"    pm.collectionVariables.set(\"first_list_id\", jsonData.results[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/account/{account_id}/lists?api_key={{API_KEY}}&language={{LANG}}&page=1&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"account",
+								"{account_id}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Favorite Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/account/{account_id}/favorite/movies?api_key={{API_KEY}}&language={{LANG}}&sort_by=created_at.asc&page=1&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"account",
+								"{account_id}",
+								"favorite",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								},
+								{
+									"key": "sort_by",
+									"value": "created_at.asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark as Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"media_type\": \"movie\",\n  \"media_id\": {{first_movie_id}},\n  \"favorite\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/account/{account_id}/favorite?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"account",
+								"{account_id}",
+								"favorite"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rated Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/account/{account_id}/rated/movies?api_key={{API_KEY}}&language={{LANG}}&session_id={{session_id}}&sort_by=created_at.asc&page=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"account",
+								"{account_id}",
+								"rated",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								},
+								{
+									"key": "sort_by",
+									"value": "created_at.asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LISTS",
+			"item": [
+				{
+					"name": "Create List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Lista de películas solidarias\",\n  \"description\": \"pop corn app ksdjhskjfh\",\n  \"language\": \"en\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{first_list_id}}?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{first_list_id}}"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{first_list_id}}?api_key={{API_KEY}}&language={{LANG}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{first_list_id}}"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "language",
+									"value": "{{LANG}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"media_id\": {{first_movie_id}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{first_list_id}}/add_item?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{first_list_id}}",
+								"add_item"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"media_id\": {{first_movie_id}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{first_list_id}}/remove_item?api_key={{API_KEY}}&session_id={{session_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{first_list_id}}",
+								"remove_item"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/list/{{first_list_id}}/clear?api_key={{API_KEY}}&session_id={{session_id}}&confirm=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"list",
+								"{{first_list_id}}",
+								"clear"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{API_KEY}}"
+								},
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								},
+								{
+									"key": "confirm",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "session_id",
+			"value": ""
+		},
+		{
+			"key": "request_token",
+			"value": ""
+		},
+		{
+			"key": "first_list_id",
+			"value": ""
+		},
+		{
+			"key": "first_movie_id",
+			"value": ""
+		}
+	]
+}
