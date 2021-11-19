@@ -51,8 +51,15 @@ export interface DtoList{
 }
 
 
-export interface NuevaLista {
-  name: string;
-  description: string;
-  language: string;
+export class DtoLista {
+  name!: string;
+  description!: string;
+  language!: string;
+}
+
+export interface DtoListaResponse {
+  status_code: number;
+  status_message: string;
+  success: boolean;
+  list_id: number;
 }

@@ -38,7 +38,7 @@ export class MoviesItemComponent implements OnInit {
   openMovieAddDialog(id : number |undefined){
     this.dialog.open(DialogMovieAddComponent, {
       height: '400px',
-      width: '500px',
+      width: '550px',
       data: { movieId: this.movie?.id }
     });
   }

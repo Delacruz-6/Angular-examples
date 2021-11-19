@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { List, NuevaLista } from 'src/app/interfaces/list.interface';
+import { List, DtoLista } from 'src/app/interfaces/list.interface';
 import { MovieResponse } from 'src/app/interfaces/movies-list.interface';
 import { ListService } from 'src/app/services/list.service';
 import { MoviesServiceService } from 'src/app/services/movies-service.service';
@@ -20,7 +20,7 @@ export class DialogMovieAddComponent implements OnInit {
   movie!: MovieResponse;
   list !: List;
   Lists !: List[];
-  listaNueva !: NuevaLista;
+  listaNueva = new DtoLista();
   selectedListId!: string;
 
   constructor(
@@ -55,7 +55,7 @@ export class DialogMovieAddComponent implements OnInit {
     this.listService.addPeliculaToLista( this.selectedListId, this.data.movieId).subscribe();
   }
 
-  onSubmit(){
+  refresh(){
     window.location.reload();
   }
 

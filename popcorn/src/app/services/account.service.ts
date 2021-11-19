@@ -13,8 +13,7 @@ export class AccountService {
 
   getUser():Observable <UserResponse>{
     return this.http.get<UserResponse>(`
-    ${environment.apiBaseUrl}/account?
-    api_key=${environment.apiKey}&session_id=${environment.session_id}`);
+    ${environment.apiBaseUrl}/account?api_key=${environment.apiKey}&session_id=${environment.session_id}`);
   }
 
 }

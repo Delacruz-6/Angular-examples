@@ -2,12 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { List, ListaPeliculasResponse, ListResponse, NuevaLista } from '../interfaces/list.interface';
-import { Movie } from '../interfaces/movies-list.interface';
+import { DtoLista, DtoListaResponse, List, ListaPeliculasResponse, ListResponse } from '../interfaces/list.interface';
 
 const DEFAULT_HEADER = {
   headers: new HttpHeaders({
-    'Content-type': 'aplication/json'
+    'Content-type': 'application/json'
   })
 }
 @Injectable({
@@ -30,9 +29,10 @@ export class ListService {
     return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/list/${id}?api_key=${environment.apiKey}`);
   }
 
-  createList(lista:NuevaLista){
-    return this.http.post<NuevaLista>(`${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${environment.session_id}`, lista, DEFAULT_HEADER);
+  createList(lista:DtoLista): Observable<DtoListaResponse>{
+    return this.http.post<DtoListaResponse>(`${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${environment.session_id}`, lista, DEFAULT_HEADER);
 
   }
+  // Devuelve interface pero se le pasa DTO
 
 }
