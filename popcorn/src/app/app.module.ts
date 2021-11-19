@@ -22,6 +22,8 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { PlaylistListComponent } from './playlist-list/playlist-list.component';
 import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
 import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
+import { DialogLoginComponent } from './dialogs/dialog-login/dialog-login.component';
+import { SessionComponent } from './share/session/session.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
     CuentaComponent,
     PlaylistListComponent,
     PlaylistDetailComponent,
-    PlaylistItemComponent
+    PlaylistItemComponent,
+    DialogLoginComponent,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

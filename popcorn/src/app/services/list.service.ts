@@ -1,10 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { List, ListaPeliculasResponse, ListResponse } from '../interfaces/list.interface';
+import { List, ListaPeliculasResponse, ListResponse, NuevaLista } from '../interfaces/list.interface';
 import { Movie } from '../interfaces/movies-list.interface';
 
+const DEFAULT_HEADER = {
+  headers: new HttpHeaders({
+    'Content-type': 'aplication/json'
+  })
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -18,11 +23,16 @@ export class ListService {
   }
 
   addPeliculaToLista(idLista : string, idPelicula : number){
-    return this.http.post<List>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${environment.session_id}`, {"mediaId": idPelicula});
+    return this.http.post<List>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${environment.session_id}`, {media_id: idPelicula});
   }
 
   getListDetail(id : string): Observable <ListaPeliculasResponse>{
     return this.http.get<ListaPeliculasResponse>(`${environment.apiBaseUrl}/list/${id}?api_key=${environment.apiKey}`);
+  }
+
+  createList(lista:NuevaLista){
+    return this.http.post<NuevaLista>(`${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${environment.session_id}`, lista, DEFAULT_HEADER);
+
   }
 
 }

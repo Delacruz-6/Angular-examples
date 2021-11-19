@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { List } from 'src/app/interfaces/list.interface';
+import { Router } from '@angular/router';
+import { List, NuevaLista } from 'src/app/interfaces/list.interface';
 import { MovieResponse } from 'src/app/interfaces/movies-list.interface';
 import { ListService } from 'src/app/services/list.service';
 import { MoviesServiceService } from 'src/app/services/movies-service.service';
@@ -19,16 +20,20 @@ export class DialogMovieAddComponent implements OnInit {
   movie!: MovieResponse;
   list !: List;
   Lists !: List[];
+  listaNueva !: NuevaLista;
   selectedListId!: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogMovieAddData,
     private movieService: MoviesServiceService,
-    private listService: ListService) { }
+    private listService: ListService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.getMovieId();
     this.getList();
+    console.log(this.selectedListId)
+    console.log(this.data.movieId)
 
   }
 
@@ -46,9 +51,16 @@ export class DialogMovieAddComponent implements OnInit {
   }
 
 
-  onSubmit(){
+  addMovieList(){
     this.listService.addPeliculaToLista( this.selectedListId, this.data.movieId).subscribe();
+  }
+
+  onSubmit(){
     window.location.reload();
+  }
+
+  addNewList(){
+    this.listService.createList(this.listaNueva).subscribe();
   }
 
 

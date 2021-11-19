@@ -45,3 +45,14 @@ export interface Pelicula {
   vote_average: number;
   vote_count: number;
 }
+
+export interface DtoList{
+  mediaId: number
+}
+
+
+export interface NuevaLista {
+  name: string;
+  description: string;
+  language: string;
+}

@@ -2,9 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { DialogLoginComponent } from '../dialogs/dialog-login/dialog-login.component';
 import { DialogMovieAddComponent } from '../dialogs/dialog-movie-add/dialog-movie-add.component';
 import { DialogMovieDetailComponent } from '../dialogs/dialog-movie-detail/dialog-movie-detail.component';
 import { Movie } from '../interfaces/movies-list.interface';
+import { AuthServiceService } from '../services/auth-service.service';
 import { MoviesServiceService } from '../services/movies-service.service';
 
 @Component({
@@ -16,7 +18,9 @@ export class MoviesItemComponent implements OnInit {
   @Input() movie!: Movie;
   i: number = 0;
 
-  constructor(private route: ActivatedRoute, private moviesService : MoviesServiceService,private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private moviesService : MoviesServiceService,
+              private dialog: MatDialog,
+              private authService: AuthServiceService) { }
 
   ngOnInit(): void {
 
@@ -37,6 +41,28 @@ export class MoviesItemComponent implements OnInit {
       width: '500px',
       data: { movieId: this.movie?.id }
     });
+  }
+
+  addFavorite(){
+    if( this.authService.isLoggedIn()){
+
+    }else{
+      this.openLoginDialog();
+    }
+  }
+  openLoginDialog(){
+    this.dialog.open(DialogLoginComponent,{
+      width: '400px',
+      disableClose: true,
+
+    })
+  }
+  addToPlayList(id : number |undefined) {
+    if(this.authService.isLoggedIn()) {
+      this.openMovieAddDialog(id);
+    } else {
+      this.openLoginDialog();
+    }
   }
 
 
