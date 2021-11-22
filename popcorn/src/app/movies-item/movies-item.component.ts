@@ -5,7 +5,9 @@ import { environment } from 'src/environments/environment';
 import { DialogLoginComponent } from '../dialogs/dialog-login/dialog-login.component';
 import { DialogMovieAddComponent } from '../dialogs/dialog-movie-add/dialog-movie-add.component';
 import { DialogMovieDetailComponent } from '../dialogs/dialog-movie-detail/dialog-movie-detail.component';
+import { FavoriteDto } from '../interfaces/account.interfaces';
 import { Movie } from '../interfaces/movies-list.interface';
+import { AccountService } from '../services/account.service';
 import { AuthServiceService } from '../services/auth-service.service';
 import { MoviesServiceService } from '../services/movies-service.service';
 
@@ -18,9 +20,12 @@ export class MoviesItemComponent implements OnInit {
   @Input() movie!: Movie;
   i: number = 0;
 
+  dtoFavoritos = new FavoriteDto ();
+
   constructor(private route: ActivatedRoute, private moviesService : MoviesServiceService,
               private dialog: MatDialog,
-              private authService: AuthServiceService) { }
+              private authService: AuthServiceService,
+              private accountService: AccountService) { }
 
   ngOnInit(): void {
 
@@ -43,9 +48,12 @@ export class MoviesItemComponent implements OnInit {
     });
   }
 
-  addFavorite(){
+  addFavorite(mediaId : number ){
     if( this.authService.isLoggedIn()){
-
+      this.dtoFavoritos.media_id=mediaId
+      console.log(this.dtoFavoritos.media_id)
+      console.log(this.dtoFavoritos)
+      this.accountService.addFavorite(this.dtoFavoritos).subscribe();
     }else{
       this.openLoginDialog();
     }

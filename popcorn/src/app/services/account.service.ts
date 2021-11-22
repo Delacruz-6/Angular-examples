@@ -19,8 +19,8 @@ export class AccountService {
     return this.http.get<UserResponse>(`${environment.apiBaseUrl}/account?api_key=${environment.apiKey}&session_id=${environment.session_id}`);
   }
 
-  addFavorite(dto : FavoriteDto){
-    return this.http.post(`${environment.apiBaseUrl}/account?api_key=${environment.apiKey}&session_id=${environment.session_id}`, dto, DEFAULT_HEADER)
+  addFavorite(dto : FavoriteDto): Observable<FavoriteResponse>{
+    return this.http.post<FavoriteResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/favorite?api_key=${environment.apiKey}&session_id=${environment.session_id}`, dto, DEFAULT_HEADER)
 
   }
 

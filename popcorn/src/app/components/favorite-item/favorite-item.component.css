@@ -1,0 +1,35 @@
+
+.movie-image img {
+  transition: transform .5s ease;
+  object-fit: cover;
+}
+.movie-image img:hover{
+transform: scale(1.3);
+transition: transform .5s ease;
+}
+
+.movie-image:hover{
+cursor: pointer;
+}
+
+.title, .subtitle{
+width: 200px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.circulo{
+  position:absolute;
+  margin-top:-200px;
+}
+.movie-image{
+width: 100%;
+overflow: hidden;
+height: 200px;
+border-radius: 10px;
+}
+.mat-card, button{
+background-color: rgb(255, 255, 255);
+color: black;
+}

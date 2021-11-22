@@ -22,9 +22,9 @@ export interface UserResponse {
 }
 
 export class FavoriteDto {
-  media_type!: string;
+  media_type: string = "movie";
   media_id!: number;
-  favorite!: boolean;
+  favorite: boolean= true;
 }
 
 export interface FavoriteResponse {

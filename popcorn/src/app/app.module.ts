@@ -24,6 +24,8 @@ import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.compo
 import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
 import { DialogLoginComponent } from './dialogs/dialog-login/dialog-login.component';
 import { SessionComponent } from './share/session/session.component';
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
+import { FavoriteItemComponent } from './components/favorite-item/favorite-item.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { SessionComponent } from './share/session/session.component';
     PlaylistDetailComponent,
     PlaylistItemComponent,
     DialogLoginComponent,
-    SessionComponent
+    SessionComponent,
+    FavoriteListComponent,
+    FavoriteItemComponent
   ],
   imports: [
     BrowserModule,

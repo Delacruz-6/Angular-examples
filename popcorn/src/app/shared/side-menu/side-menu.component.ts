@@ -1,6 +1,8 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserResponse } from 'src/app/interfaces/account.interfaces';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -9,9 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SideMenuComponent implements OnInit {
   currentPage = 'profile';
-  constructor(private route: ActivatedRoute) { }
+  user !: UserResponse;
+  constructor(private route: ActivatedRoute,
+    private accountService : AccountService) { }
 
   ngOnInit(): void {
     console.log(this.route.url);
+    this.accountService.getUser().subscribe( res =>{
+      this.user= res;
+    })
   }
 }

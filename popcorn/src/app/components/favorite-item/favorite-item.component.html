@@ -1,0 +1,13 @@
+<mat-card class="movie-card" >
+  <mat-card-content >
+    <div class="movie-image" (click)="openMovieDetailDialog(moviesFavoritesInput?.id)">
+      <img [src]="getMovieImagenUrl(moviesFavoritesInput)"   height="200px" width="100%">
+    </div>
+    <div class="circulo">
+      <circle-progress [percent]="moviesFavoritesInput.vote_average*10"></circle-progress>
+    </div>
+    <h3 class="title"><strong>{{moviesFavoritesInput?.title}}</strong></h3>
+    <p class="subtitle">{{moviesFavoritesInput?.overview}}</p>
+  </mat-card-content>
+
+</mat-card>

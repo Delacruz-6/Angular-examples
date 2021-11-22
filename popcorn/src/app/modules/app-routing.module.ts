@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CuentaComponent } from '../components/cuenta/cuenta.component';
+import { FavoriteListComponent } from '../components/favorite-list/favorite-list.component';
 import { MoviesPopularListComponent } from '../movies-popular-list/movies-popular-list.component';
 import { PeopleDetailComponent } from '../people-detail/people-detail.component';
 import { PeoplesPopularComponent } from '../peoples-popular/peoples-popular.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'playlist',pathMatch: 'full', component: PlaylistListComponent },
   { path: 'loginsuccess',pathMatch: 'full', component: SessionComponent },
   { path: 'cuenta',pathMatch: 'full', component: CuentaComponent },
+  { path: 'favoritos',pathMatch: 'full', component: FavoriteListComponent },
   { path: '',pathMatch: 'full', component: MoviesPopularListComponent },
 ];
 

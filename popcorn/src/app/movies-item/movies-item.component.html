@@ -11,8 +11,8 @@
       <p class="subtitle">{{movie?.overview}}</p>
     </mat-card-content>
     <div fxLayout="row" fxLayoutAlign="space-evenly " >
-      <button mat-raised-button  (click)="addFavorite()">Ver mas</button>
-      <button mat-icon-button > <mat-icon >favorite_border</mat-icon></button> <!-- (click)="saveFavorite()" -->
+      <button mat-raised-button  >Ver mas</button>
+      <button mat-icon-button (click)="addFavorite(movie.id)"> <mat-icon >favorite_border</mat-icon></button> <!-- (click)="saveFavorite()" -->
       <button mat-icon-button (click)="addToPlayList(movie?.id)"> <mat-icon >playlist_add</mat-icon></button>
     </div>
 

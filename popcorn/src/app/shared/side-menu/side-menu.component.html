@@ -6,6 +6,8 @@
         <mat-list-item role="listitem"><a [routerLink]="['/people-popular']" ><mat-icon class="icon-menu">person</mat-icon>Personas</a></mat-list-item>
         <mat-list-item role="listitem"><a [routerLink]="['/playlist']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">queue_music</mat-icon>Playlists</a></mat-list-item>
         <mat-list-item role="listitem"><a [routerLink]="['/cuenta']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">manage_accounts</mat-icon>Cuenta</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/favoritos']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">favorite</mat-icon>Peliculas favoritas</a></mat-list-item>
+
         <mat-divider></mat-divider>
         <mat-list-item role="listitem"><mat-icon class="sidenav-icon">logout</mat-icon> Salir</mat-list-item>
     </mat-list>
@@ -19,15 +21,17 @@
         </button>
         <span>PopCorn</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/favoritos']" routerLinkActive="router-link-active" >
           <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+        <button mat-button class="example-icon" [routerLink]="['/cuenta']" routerLinkActive="router-link-active" >
+          <span> {{user.username}}</span>
         </button>
+
       </mat-toolbar>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
 
 

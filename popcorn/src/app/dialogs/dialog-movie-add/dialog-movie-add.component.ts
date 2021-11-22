@@ -58,10 +58,6 @@ export class DialogMovieAddComponent implements OnInit {
 
   }
 
-  refresh(){
-    window.location.reload();
-  }
-
   addNewList(){
     this.listService.createList(this.listaNueva).subscribe( res =>{
       this.listService.addPeliculaToLista(res.list_id,this.data.movieId ).subscribe(resp =>{
