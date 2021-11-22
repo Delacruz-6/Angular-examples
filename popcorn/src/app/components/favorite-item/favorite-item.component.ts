@@ -29,4 +29,8 @@ export class FavoriteItemComponent implements OnInit {
       data: { movieId: this.moviesFavoritesInput?.id }
     });
   }
+
+  deletePlaylist(){
+    return ;
+  }
 }

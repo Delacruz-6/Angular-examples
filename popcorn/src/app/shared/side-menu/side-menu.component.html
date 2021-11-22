@@ -2,14 +2,14 @@
     <mat-sidenav #sidenav mode="push" class="side-menu">
       <h1>Menu</h1>
       <mat-list role="list">
-        <mat-list-item role="listitem"><a [routerLink]="['/movies-popular']"routerLinkActive="router-link-active"><mat-icon class="icon-menu">movie_filter</mat-icon>Peliculas</a></mat-list-item>
-        <mat-list-item role="listitem"><a [routerLink]="['/people-popular']" ><mat-icon class="icon-menu">person</mat-icon>Personas</a></mat-list-item>
-        <mat-list-item role="listitem"><a [routerLink]="['/playlist']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">queue_music</mat-icon>Playlists</a></mat-list-item>
-        <mat-list-item role="listitem"><a [routerLink]="['/cuenta']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">manage_accounts</mat-icon>Cuenta</a></mat-list-item>
-        <mat-list-item role="listitem"><a [routerLink]="['/favoritos']" routerLinkActive="router-link-active"><mat-icon class="icon-menu">favorite</mat-icon>Peliculas favoritas</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/movies-popular']"routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >movie_filter</mat-icon>Peliculas</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/people-popular']" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >person</mat-icon>Personas</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/playlist']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">queue_music</mat-icon>Playlists</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/cuenta']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">manage_accounts</mat-icon>Cuenta</a></mat-list-item>
+        <mat-list-item role="listitem"><a [routerLink]="['/favoritos']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">favorite</mat-icon>Peliculas favoritas</a></mat-list-item>
 
         <mat-divider></mat-divider>
-        <mat-list-item role="listitem"><mat-icon class="sidenav-icon">logout</mat-icon> Salir</mat-list-item>
+        <mat-list-item role="listitem" ><a (click)="loginOut()"><mat-icon class="sidenav-icon">logout</mat-icon> Salir</a></mat-list-item>
     </mat-list>
     </mat-sidenav>
 
