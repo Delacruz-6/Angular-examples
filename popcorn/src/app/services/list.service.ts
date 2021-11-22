@@ -18,11 +18,11 @@ export class ListService {
 
 
   getList(): Observable<ListResponse>{
-    return this.http.get<ListResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/lists?api_key=${environment.apiKey}&session_id=${environment.session_id}`);
+    return this.http.get<ListResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/lists?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`);
   }
 
   addPeliculaToLista(idLista : number, idPelicula : number){
-    return this.http.post<List>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${environment.session_id}`, {media_id: idPelicula});
+    return this.http.post<List>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`, {media_id: idPelicula});
   }
 
   getListDetail(id : string): Observable <ListaPeliculasResponse>{
@@ -30,7 +30,7 @@ export class ListService {
   }
 
   createList(lista:DtoLista): Observable<DtoListaResponse>{
-    return this.http.post<DtoListaResponse>(`${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${environment.session_id}`, lista, DEFAULT_HEADER);
+    return this.http.post<DtoListaResponse>(`${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`, lista, DEFAULT_HEADER);
 
   }
   // Devuelve interface pero se le pasa DTO

@@ -38,4 +38,10 @@ export class AuthServiceService {
     return this.http.post<SessionResponse>(`${environment.apiBaseUrl}/authentication/session/new?api_key=${environment.apiKey}`, {request_token: this.getLocalRequestToken()})
   }
 
+  logout() {
+    localStorage.removeItem('session_id');
+    localStorage.removeItem('request_token');
+    window.location.reload();
+  }
+
 }

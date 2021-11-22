@@ -25,7 +25,10 @@
           <mat-icon>favorite</mat-icon>
         </button>
         <button mat-button class="example-icon" [routerLink]="['/cuenta']" routerLinkActive="router-link-active" >
-          <span> {{user.username}}</span>
+          <span> {{user?.username}}</span>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" (click)="loginOut()" >
+          <mat-icon>power_settings_new</mat-icon>
         </button>
 
       </mat-toolbar>
