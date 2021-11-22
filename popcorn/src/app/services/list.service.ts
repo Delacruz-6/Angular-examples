@@ -21,7 +21,7 @@ export class ListService {
     return this.http.get<ListResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/lists?api_key=${environment.apiKey}&session_id=${environment.session_id}`);
   }
 
-  addPeliculaToLista(idLista : string, idPelicula : number){
+  addPeliculaToLista(idLista : number, idPelicula : number){
     return this.http.post<List>(`${environment.apiBaseUrl}/list/${idLista}/add_item?api_key=${environment.apiKey}&session_id=${environment.session_id}`, {media_id: idPelicula});
   }
 

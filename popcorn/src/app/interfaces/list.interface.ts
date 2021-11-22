@@ -54,7 +54,7 @@ export interface DtoList{
 export class DtoLista {
   name!: string;
   description!: string;
-  language!: string;
+  language: string = "es-ES";
 }
 
 export interface DtoListaResponse {

@@ -20,3 +20,15 @@ export interface UserResponse {
   include_adult: boolean;
   username: string;
 }
+
+export class FavoriteDto {
+  media_type!: string;
+  media_id!: number;
+  favorite!: boolean;
+}
+
+export interface FavoriteResponse {
+  success: boolean;
+  status_code: number;
+  status_message: string;
+}

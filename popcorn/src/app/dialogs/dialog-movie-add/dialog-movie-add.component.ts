@@ -21,7 +21,7 @@ export class DialogMovieAddComponent implements OnInit {
   list !: List;
   Lists !: List[];
   listaNueva = new DtoLista();
-  selectedListId!: string;
+  selectedListId!: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogMovieAddData,
@@ -52,7 +52,10 @@ export class DialogMovieAddComponent implements OnInit {
 
 
   addMovieList(){
-    this.listService.addPeliculaToLista( this.selectedListId, this.data.movieId).subscribe();
+    this.listService.addPeliculaToLista( this.selectedListId, this.data.movieId).subscribe(res =>{
+      window.location.reload();
+    });
+
   }
 
   refresh(){
@@ -60,7 +63,12 @@ export class DialogMovieAddComponent implements OnInit {
   }
 
   addNewList(){
-    this.listService.createList(this.listaNueva).subscribe();
+    this.listService.createList(this.listaNueva).subscribe( res =>{
+      this.listService.addPeliculaToLista(res.list_id,this.data.movieId ).subscribe(resp =>{
+        window.location.reload();
+      });
+
+    });
   }
 
 
