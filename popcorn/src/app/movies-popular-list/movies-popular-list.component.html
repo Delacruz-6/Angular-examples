@@ -2,7 +2,7 @@
 <mat-form-field appearance="fill">
   <div class="select">
   <mat-label>Generos</mat-label> <!-- multiple-->
-    <mat-select  [(ngModel)]="idGenero" name="genero" >  <!--   [formControl]="generos" -->
+    <mat-select  [(ngModel)]="idGenero" name="genero" >   [formControl]="generos" -->
       <mat-option *ngFor="let genero of generosLists" [value]="genero.id">{{genero?.name}}</mat-option>
     </mat-select>
   </div>

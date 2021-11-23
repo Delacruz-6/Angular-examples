@@ -47,7 +47,7 @@ export class MoviesPopularListComponent implements OnInit {
 
   filterMovies(){
     this.moviesListGenero = this.moviesPopularList;
-    this.moviesListGenero = this.moviesPopularList?.filter( movie => movie.genre_ids.includes(this.idGenero))
+    this.moviesListGenero = this.moviesPopularList?.filter( movie => movie.genre_ids.includes(this.idGenero));
     console.log(this.idGenero);
   }
 
