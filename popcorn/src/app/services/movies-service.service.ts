@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MovieResponse, MoviesPopularResponse } from '../interfaces/movies-list.interface';
+import { GenreRosponse, MovieResponse, MoviesPopularResponse } from '../interfaces/movies-list.interface';
 
 
 @Injectable({
@@ -20,6 +20,11 @@ export class MoviesServiceService {
 
   getMovie(id: number): Observable<MovieResponse>{
     return this.http.get<MovieResponse>(`${environment.apiBaseUrl}/movie/${id}?api_key=${environment.apiKey}&language=${environment.LANG}`)
+  }
+
+
+  getGenre(): Observable<GenreRosponse>{
+    return this.http.get<GenreRosponse>(`${environment.apiBaseUrl}/genre/movie/list?api_key=${environment.apiKey}&language=${environment.LANG}`);
   }
 
 

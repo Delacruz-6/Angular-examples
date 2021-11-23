@@ -1,6 +1,15 @@
 
+<mat-form-field appearance="fill">
+  <div class="select">
+  <mat-label>Generos</mat-label> <!-- multiple-->
+    <mat-select  [(ngModel)]="idGenero" name="genero" >  <!--   [formControl]="generos" -->
+      <mat-option *ngFor="let genero of generosLists" [value]="genero.id">{{genero?.name}}</mat-option>
+    </mat-select>
+  </div>
+</mat-form-field>
+<button mat-button (click)="filterMovies()" > Filtrar</button>
 <div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="center start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
-  <app-movies-item class="contenedor" fxFLex="15" *ngFor="let movie of moviesPopularList; let i = index" [movie]="movie"> </app-movies-item>
+  <app-movies-item class="contenedor" fxFLex="15" *ngFor="let movie of moviesListGenero; let i = index" [movie]="movie"> </app-movies-item>
 </div>
 
 

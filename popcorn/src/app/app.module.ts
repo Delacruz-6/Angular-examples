@@ -17,7 +17,7 @@ import { DialogMovieDetailComponent } from './dialogs/dialog-movie-detail/dialog
 import { PeopleDetailComponent } from './people-detail/people-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogMovieAddComponent } from './dialogs/dialog-movie-add/dialog-movie-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { PlaylistListComponent } from './playlist-list/playlist-list.component';
 import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
@@ -56,6 +56,7 @@ import { FavoriteItemComponent } from './components/favorite-item/favorite-item.
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       "backgroundColor": "#fffafa",
       "backgroundStrokeWidth": 0,
@@ -70,10 +71,9 @@ import { FavoriteItemComponent } from './components/favorite-item/favorite-item.
       "innerStrokeWidth": 1,
       "titleFontSize": "15",
       "titleFontWeight": "600",
-      "subtitleFontWeight": "0",
-      "subtitle":"Votos",
       "imageHeight": 20,
       "imageWidth": 20,
+      "showSubtitle":  false,
       "startFromZero": false})
   ],
   entryComponents: [

@@ -2,3 +2,13 @@
   margin-top: 30px;
   margin-left: 30px;
 }
+button{
+  color: black;
+  background-color: rgb(219, 219, 219);
+}
+
+.select, .mat-label{
+  color: black;
+}
+
+
