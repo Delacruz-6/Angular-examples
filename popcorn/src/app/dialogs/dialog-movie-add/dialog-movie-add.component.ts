@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { List, DtoLista } from 'src/app/interfaces/list.interface';
@@ -22,6 +23,13 @@ export class DialogMovieAddComponent implements OnInit {
   Lists !: List[];
   listaNueva = new DtoLista();
   selectedListId!: number;
+
+  /*
+  formAddList = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl('')
+  });
+  */
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogMovieAddData,

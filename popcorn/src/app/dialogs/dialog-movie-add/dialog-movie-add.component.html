@@ -17,6 +17,15 @@
       <mat-label for="description">Descripción</mat-label>
       <textarea matInput type="textarea" placeholder="Describe la lista..." id="description" [(ngModel)]="listaNueva.description" name="description"></textarea>
   </div>
+    <!--
+      <div formGroupName="formAddList">
+    <h3>Crear lista</h3>
+    <mat-label for="name">Nombre</mat-label>
+    <input matInput type="text" placeholder="Nombre de a lista" id="name"  formControlName="name">
+    <mat-label for="description">Descripción</mat-label>
+    <textarea matInput type="textarea" placeholder="Describe la lista..." id="description"  formControlName="description"></textarea>
+  </div>
+  -->
   <div >
     <button  mat-raised-button color="accent" (click)="addMovieList()" type="submit"  > Guardar lista</button>
     <button  mat-raised-button color="accent" (click)="addNewList()" type="submit"  >  Crear lista</button>
