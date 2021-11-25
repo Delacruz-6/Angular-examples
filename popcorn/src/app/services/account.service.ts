@@ -21,10 +21,13 @@ export class AccountService {
 
   addFavorite(dto : FavoriteDto): Observable<FavoriteResponse>{
     return this.http.post<FavoriteResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/favorite?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`, dto, DEFAULT_HEADER)
-
   }
+
+
   deleteFavorite():Observable<FavoriteResponse>{
     return this.http.delete<FavoriteResponse>(`${environment.apiBaseUrl}/account/${environment.account_id}/favorite?api_key=${environment.apiKey}&session_id=${localStorage.getItem('session_id')}`)
   }
+
+
 
 }
