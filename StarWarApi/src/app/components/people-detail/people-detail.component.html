@@ -1,0 +1,18 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <mat-card-title><p>Nombre: {{personDetail?.name}}</p></mat-card-title>
+    <mat-card-subtitle><p>Fecha de creación: {{personDetail?.created}} </p></mat-card-subtitle>
+    <mat-card-subtitle><p>Fecha edición: {{personDetail?.edited}}</p> </mat-card-subtitle>
+    <img mat-card-xl-image [src]="imgPersonaje" >
+
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Peso: {{personDetail?.mass}} kg
+      <br> Altura: {{personDetail?.height}} cm
+      <br>Genero: {{personDetail?.gender}}
+      <br>Color de ojos: {{personDetail?.eye_color}}
+    </p>
+    <button mat-raised-button [routerLink]="['/planets/', getplanetId(personDetail.homeworld)]">Ver planeta origen</button>
+  </mat-card-content>
+</mat-card>

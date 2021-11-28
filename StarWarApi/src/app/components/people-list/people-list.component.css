@@ -1,0 +1,10 @@
+.contenedor{
+  display: block;
+  justify-content: space-around;
+  margin-left: 40px;
+}
+.center{
+  margin: 60px;
+  text-align: center;
+
+}
