@@ -1,0 +1,9 @@
+
+<mat-card class="main-card">
+  <mat-card-title>{{personInput?.name}}</mat-card-title>
+  <img mat-card-lg-image [src]="getImgPerson(findPerson())" alt="Imagen del personaje">{{i+1}}
+  <mat-card-content>
+    <button mat-raised-button [routerLink]="['/people/', getplanetId(personInput.url)]">Ver mas</button>
+    <button mat-raised-button [routerLink]="['/planets/', getplanetId(personInput.homeworld)]">Ver planeta origen</button>
+  </mat-card-content>
+</mat-card>

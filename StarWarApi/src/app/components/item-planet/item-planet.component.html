@@ -1,0 +1,17 @@
+<mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>{{planetInput.name}}</mat-card-title>
+      <mat-card-subtitle>{{planetInput.climate}} </mat-card-subtitle>
+      <mat-card-subtitle>{{planetInput.terrain}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Fecha de creación: {{planetInput.created}}
+        <br>Diametro: {{planetInput.diameter}}
+        <br>Gravedad: {{planetInput.gravity}}
+      </p>
+      <a [routerLink]="['/planets', getPlanetId(planetInput.url)]">
+        <button mat-raised-button>Ver mas </button>
+      </a>
+    </mat-card-content>
+</mat-card>
