@@ -1,0 +1,15 @@
+<form class="example-form" [formGroup]="form">
+  <mat-form-field  appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="Write your username"  formControlName="username" name="username" >
+  </mat-form-field>
+  <mat-form-field  appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Write your email" formControlName="email" name="email">
+  </mat-form-field>
+  <mat-form-field  appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Write your password" type="password" formControlName="password" name="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="doSignUp()">Register</button>
+</form>
