@@ -1,0 +1,85 @@
+<div class="color">
+  <!--Option/select genérico-->
+<mat-form-field appearance="fill">
+  <mat-label>Provincias</mat-label>
+  <mat-select [(ngModel)]="provincia">
+
+    <mat-option value="">Todas</mat-option>
+    <mat-option value="Álava">Álava</mat-option>
+    <mat-option value="Albacete">Albacete</mat-option>
+    <mat-option value="Alicante">Alicante</mat-option>
+    <mat-option value="Almería">Almería</mat-option>
+    <mat-option value="Asturias">Asturias</mat-option>
+    <mat-option value="Ávila">Ávila</mat-option>
+    <mat-option value="Badajoz">Badajoz</mat-option>
+    <mat-option value="Barcelona">Barcelona</mat-option>
+    <mat-option value="Burgos">Burgos</mat-option>
+    <mat-option value="Cáceres">Cáceres</mat-option>
+    <mat-option value="Cádiz">Cádiz</mat-option>
+    <mat-option value="Cantabria">Cantabria</mat-option>
+    <mat-option value="Castellón">Castellón</mat-option>
+    <mat-option value="Ceuta">Ceuta</mat-option>
+    <mat-option value="Ciudad Real">Ciudad Real</mat-option>
+    <mat-option value="Córdoba">Córdoba</mat-option>
+    <mat-option value="Cuenca">Cuenca</mat-option>
+    <mat-option value="Girona">Girona</mat-option>
+    <mat-option value="Las Palmas">Las Palmas</mat-option>
+    <mat-option value="Granada">Granada</mat-option>
+    <mat-option value="Guadalajara">Guadalajara</mat-option>
+    <mat-option value="Guipúzcoa">Guipúzcoa</mat-option>
+    <mat-option value="Huelva">Huelva</mat-option>
+    <mat-option value="Huesca">Huesca</mat-option>
+    <mat-option value="Illes Balears">Illes Balears</mat-option>
+    <mat-option value="Jaén">Jaén</mat-option>
+    <mat-option value="A Coruña">A Coruña</mat-option>
+    <mat-option value="La Rioja">La Rioja</mat-option>
+    <mat-option value="León">León</mat-option>
+    <mat-option value="Lleida">Lleida</mat-option>
+    <mat-option value="Lugo">Lugo</mat-option>
+    <mat-option value="Madrid">Madrid</mat-option>
+    <mat-option value="Málaga">Málaga</mat-option>
+    <mat-option value="Melilla">Melilla</mat-option>
+    <mat-option value="Murcia">Murcia</mat-option>
+    <mat-option value="Navarra">Navarra</mat-option>
+    <mat-option value="Ourense">Ourense</mat-option>
+    <mat-option value="Palencia">Palencia</mat-option>
+    <mat-option value="Pontevedra">Pontevedra</mat-option>
+    <mat-option value="Salamanca">Salamanca</mat-option>
+    <mat-option value="Segovia">Segovia</mat-option>
+    <mat-option value="Sevilla">Sevilla</mat-option>
+    <mat-option value="Soria">Soria</mat-option>
+    <mat-option value="Tarragona">Tarragona</mat-option>
+    <mat-option value="Santa Cruz de Tenerife">Santa Cruz de Tenerife</mat-option>
+    <mat-option value="Teruel">Teruel</mat-option>
+    <mat-option value="Toledo">Toledo</mat-option>
+    <mat-option value="Valencia">Valencia</mat-option>
+    <mat-option value="Valéncia">Valéncia</mat-option>
+    <mat-option value="Valladolid">Valladolid</mat-option>
+    <mat-option value="Vizcaya">Vizcaya</mat-option>
+    <mat-option value="Zamora">Zamora</mat-option>
+    <mat-option value="Zaragoza">Zaragoza</mat-option>
+
+  </mat-select>
+</mat-form-field>
+
+  <!--Precio Min-->
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Min</mat-label>
+    <input matInput type="number" placeholder="0" [(ngModel)]="precioMin">
+    <span matSuffix>€</span>
+  </mat-form-field>
+
+  <!--Precio Max-->
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Max</mat-label>
+    <input matInput type="number" placeholder="0" [(ngModel)]="precioMax">
+    <span matSuffix>€</span>
+  </mat-form-field>
+
+</div>
+
+  <button mat-flat-button color="primary" (click)="filterGasolinera()" >Buscar</button>
+
+<div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="start start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
+  <app-gasolinera-item *ngFor="let g of gasolineraList" [gasolineraInput]="g"></app-gasolinera-item>
+</div>
