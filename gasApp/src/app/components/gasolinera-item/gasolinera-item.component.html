@@ -3,19 +3,16 @@
   <div class="movie-image" (click)="openGasolineraDetailDialog()">
     <img src="http://motor.elpais.com/wp-content/uploads/2017/06/2017_06_25_foster.jpg"   height="200px" width="100%">
   </div>
-  <mat-card-title>{{gasolineraInput?.localidad}} || {{gasolineraInput?.localidad}}</mat-card-title>
+  <mat-card-title>{{gasolineraInput?.localidad}}</mat-card-title>
   <mat-card-subtitle>{{gasolineraInput?.direccion}}2</mat-card-subtitle>
   <mat-card-content fxLayout="row wrap" fxLayout.sm="colunm">
-    <div>
-      <h3 class="title">Precios:</h3>
+    <div fxLayout="row" fxLayoutAlign="space-between">
       <p>
+        <span class="title">Precios:</span> <br>
         Gasoleo A: {{gasolineraInput?.precioGasoleoA}} € <br>
         Gasolina 95: {{gasolineraInput?.precioGasolina95E5}} € <br>
       </p>
-    </div>
-    <div fxLayoutAlign="end end">
-
-      <button mat-raised-button (click)="openGasolineraDetailDialog()">Como llegar</button>
+      <button mat-icon-button (click)="openGasolineraDetailDialog()"><mat-icon>loupe</mat-icon></button>
     </div>
   </mat-card-content>
 </mat-card>

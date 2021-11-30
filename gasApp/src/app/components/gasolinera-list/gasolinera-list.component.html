@@ -2,10 +2,22 @@
   <!--Option/select Provincias-->
 <mat-form-field appearance="fill">
   <mat-label>Provincias</mat-label>
-  <mat-select  [(ngModel)]="idProvincia" name="provincia" multiple>   <!--[formControl]="generos" -->
-    <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia">{{provincia?.Provincia}}</mat-option>
+  <mat-select  [(ngModel)]="idProvincia" name="provincia" multiple>
+    <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia" (click)="getMunicipios(provincia.IDPovincia)">
+      {{provincia?.Provincia}}
+    </mat-option>
   </mat-select>
 </mat-form-field>
+
+  <!--Lista de municipios para selecionar varios de una misma provincia selecionada-->
+    <mat-form-field appearance="fill" *ngIf="municipios">
+      <mat-label>Municipios</mat-label>
+      <mat-select  [(ngModel)]="idMunicipio" name="municipio" multiple>
+        <mat-option *ngFor="let municipio of municipios" [value]="municipio.IDMunicipio" >
+          {{municipio?.Municipio}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
 
   <!--Precio Min-->
@@ -22,6 +34,25 @@
     <span matSuffix>€</span>
   </mat-form-field>
 
+  <!-- Funcionalidad pedida en el ejercicio aunque considero mas funcional la otra opción dado que no termino de comprobar con los ngIf si solo seleciona una provincia-->
+  <!--
+  <mat-form-field class="example-full-width" appearance="fill" *ngIf="municipios">
+    <mat-label>Municipios</mat-label>
+    <input type="text"
+           placeholder="Municipio"
+           aria-label="Municipios"
+           matInput
+           [(ngModel)]="idMunicipio"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" autoactivefirstoption  >
+      <mat-option *ngFor="let municipio of municipios" [value]="municipio.IDMunicipio" >
+        {{municipio.Municipio}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+-->
+
+
 </div>
 
   <button mat-flat-button color="primary" (click)="filterGasolinera()" >Buscar</button>
@@ -31,20 +62,3 @@
   <app-gasolinera-item *ngFor="let g of gasolineraListFiltrada" [gasolineraInput]="g"></app-gasolinera-item>
 </div>
 
-
-<!--
-
-    <mat-form-field appearance="fill" floatLabel="always">
-    <mat-label>Precio Min</mat-label>
-    <mat-slider
-      thumbLabel
-      [displayWith]="formatLabel"
-      tickInterval="0.1"
-      step="0.1"
-      min="0"
-      max="5"
-      aria-label="units"
-      [value]="precioMax">
-      </mat-slider>
-  </mat-form-field>
--->

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GasolineraResponse, ListaEESSPrecio, Provincia } from '../interfaces/gasolinera.interface';
+import { GasolineraResponse, ListaEESSPrecio, Municipio, Provincia } from '../interfaces/gasolinera.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class GasolineraService {
 
   constructor(private http : HttpClient) { }
 
-  getProvincias(): Observable<Provincia[]>{
-    return this.http.get<Provincia[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/`)
-  }
+getProvincias(): Observable<Provincia[]>{
+  return this.http.get<Provincia[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/`)
+}
 getGasolineras(): Observable<any>{
   return this.http.get<any>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/`)
 }
@@ -30,12 +30,19 @@ parseAnyToGasolineraListResponse(jsonString: string) {
   jsonStringReplaced = jsonStringReplaced.replace(/Latitud/gi, 'latitud');
   jsonStringReplaced = jsonStringReplaced.replace(/IDEESS/gi, 'ideess');
   jsonStringReplaced = jsonStringReplaced.replace(/IDprovincia/gi, 'idProvincia');
+  jsonStringReplaced = jsonStringReplaced.replace(/IDMunicipio/gi, 'idMunicipio');
+
 
   let jsonFinal: GasolineraResponse = JSON.parse(jsonStringReplaced);
   return jsonFinal.listaEESSPrecio;
 }
+
 getGoogleMaps(direccion:String) {
-  return window.location.href=(`https://www.google.es/maps/search/${direccion}/`);
+  return window.open(`https://www.google.es/maps/search/${direccion}/`);
+}
+
+getMunicipios(idMunicipio: string): Observable<Municipio[]>{
+  return this.http.get<Municipio[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/MunicipiosPorProvincia/${idMunicipio}`);
 }
 
 }
