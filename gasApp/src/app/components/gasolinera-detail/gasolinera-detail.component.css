@@ -1,0 +1,12 @@
+.movie-image img {
+  transition: transform .5s ease;
+  object-fit: cover;
+}
+.movie-image img:hover{
+transform: scale(1.3);
+transition: transform .5s ease;
+}
+
+.movie-image:hover{
+cursor: pointer;
+}

@@ -1,21 +1,21 @@
 
 <mat-card class="main-card">
+  <div class="movie-image" (click)="openGasolineraDetailDialog()">
+    <img src="http://motor.elpais.com/wp-content/uploads/2017/06/2017_06_25_foster.jpg"   height="200px" width="100%">
+  </div>
   <mat-card-title>{{gasolineraInput?.localidad}} || {{gasolineraInput?.localidad}}</mat-card-title>
   <mat-card-subtitle>{{gasolineraInput?.direccion}}2</mat-card-subtitle>
-  <mat-card-subtitle>{{gasolineraInput?.latitud}}2</mat-card-subtitle>
-  <mat-card-content>
-    <h3>Precios:</h3>
-    <p>
-      Gasoleo A: {{gasolineraInput?.precioGasoleoA}} € <br>
-      Gasoleo B: {{gasolineraInput?.precioGasoleoB}} € <br>
-      Gasolina 95: {{gasolineraInput?.precioGasolina95E5}} € <br>
-    </p>
-    <button mat-raised-button (click)="openGasolineraDetailDialog()">Ver mas</button>
-
-    <!--
-    <button mat-raised-button [routerLink]="['/people/', getplanetId(personInput.url)]">Ver mas</button>
-    <button mat-raised-button [routerLink]="['/planets/', getplanetId(personInput.homeworld)]">Ver planeta origen</button>
-    -->
-
+  <mat-card-content fxLayout="row wrap" fxLayout.sm="colunm">
+    <div>
+      <h3 class="title">Precios:</h3>
+      <p>
+        Gasoleo A: {{gasolineraInput?.precioGasoleoA}} € <br>
+        Gasoleo B: {{gasolineraInput?.precioGasoleoB}} € <br>
+        Gasolina 95: {{gasolineraInput?.precioGasolina95E5}} € <br>
+      </p>
+    </div>
+    <div fxLayoutAlign="end end">
+      <button mat-raised-button (click)="openGasolineraDetailDialog()">Ver mas</button>
+    </div>
   </mat-card-content>
 </mat-card>

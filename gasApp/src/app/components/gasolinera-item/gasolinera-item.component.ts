@@ -18,11 +18,11 @@ export class GasolineraItemComponent implements OnInit {
 
   }
 
-  openGasolineraDetailDialog(){
+  openGasolineraDetailDialog( ){
     this.dialog.open(DialogGasolineraDetailComponent, {
       height: '660px',
       width: '800px',
-      data: { latitud: this.gasolineraInput?.latitud }
+      data: { gasolinera: this.gasolineraInput }
     });
   }
 

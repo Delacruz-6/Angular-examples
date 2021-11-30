@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GasolineraResponse, ListaEESSPrecio } from 'src/app/interfaces/gasolinera.interface';
 import { GasolineraService } from 'src/app/services/gasolinera.service';
 export interface DialogGasolineraData {
-  latitud: string;
+  gasolinera: ListaEESSPrecio;
 }
 
 @Component({
@@ -13,7 +13,7 @@ export interface DialogGasolineraData {
 })
 export class DialogGasolineraDetailComponent implements OnInit {
 
-  gasolinera !: ListaEESSPrecio;
+  gasolinera : ListaEESSPrecio = this.data.gasolinera;
   gasolineraList !: ListaEESSPrecio[];
   gasolineraListFiltrada !: ListaEESSPrecio[];
 
@@ -21,25 +21,7 @@ export class DialogGasolineraDetailComponent implements OnInit {
   private service : GasolineraService) { }
 
   ngOnInit(): void {
-    this.getGasolinera();
-  }
 
-  detailGasolinera(){
-    this.gasolineraListFiltrada = this.gasolineraList;
-    this.gasolineraListFiltrada = this.gasolineraList?.filter( g => g.latitud.includes(this.data.latitud));
-    console.log(this.data.latitud);
-    console.log(this.gasolinera)
-  }
-
-  getGasolinera(){
-    this.service.getGasolineras().subscribe(resp => {
-      this.gasolineraList = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
-      this.gasolinera = resp.listaEESSPrecio;
-      //this.gasolinera= resp.listaEESSPrecio?.filter( g => g.latitud.includes(this.data.latitud));
-      console.log(this.data.latitud);
-      console.log(this.gasolinera)
-      console.log(this.gasolineraList);
-    });
   }
 
 }
