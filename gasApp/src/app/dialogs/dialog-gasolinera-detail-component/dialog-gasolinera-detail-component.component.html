@@ -26,10 +26,9 @@
         Bioetanol: {{gasolinera?.precioBioetanol}}€
         <br>
       </p>
-
-
-
-
+      <button mat-raised-button (click)="getGoogleMaps(gasolinera.direccion)">
+        <mat-icon>location_on</mat-icon> Como llegar
+      </button>
     </mat-card-subtitle>
   </mat-card-title-group>
 </mat-card>

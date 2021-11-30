@@ -24,4 +24,8 @@ export class DialogGasolineraDetailComponent implements OnInit {
 
   }
 
+  getGoogleMaps(direccion:String){
+    this.service.getGoogleMaps(direccion.replace(' ', '+'));
+  }
+
 }

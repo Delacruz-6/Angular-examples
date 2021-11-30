@@ -25,9 +25,10 @@ export class GasolineraListComponent implements OnInit {
     this.service.getGasolineras().subscribe(resp => {
       this.getProvincias();
       this.filterGasolinera();
+      this.listaFullGasolineras = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
       this.gasolineraList = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
-      this.listaFullGasolineras=this.gasolineraList;
       this.gasolineraListFiltrada = this.gasolineraList;
+      this.quitarFiltro();
       console.log(this.gasolineraList);
     });
   }
@@ -60,6 +61,7 @@ export class GasolineraListComponent implements OnInit {
 
   quitarFiltro(){
     this.gasolineraListFiltrada = this.listaFullGasolineras;
+    console.log(this.gasolineraListFiltrada);
   }
 
 
