@@ -1,10 +1,17 @@
 
 <mat-card class="main-card">
-  <mat-card-title>{{gasolineraInput?.precioGasoleoA}} || {{gasolineraInput?.localidad}}</mat-card-title>
-  <mat-card-subtitle>{{gasolineraInput?.horario}}</mat-card-subtitle>
-
-
+  <mat-card-title>{{gasolineraInput?.localidad}} || {{gasolineraInput?.localidad}}</mat-card-title>
+  <mat-card-subtitle>{{gasolineraInput?.direccion}}2</mat-card-subtitle>
+  <mat-card-subtitle>{{gasolineraInput?.latitud}}2</mat-card-subtitle>
   <mat-card-content>
+    <h3>Precios:</h3>
+    <p>
+      Gasoleo A: {{gasolineraInput?.precioGasoleoA}} € <br>
+      Gasoleo B: {{gasolineraInput?.precioGasoleoB}} € <br>
+      Gasolina 95: {{gasolineraInput?.precioGasolina95E5}} € <br>
+    </p>
+    <button mat-raised-button (click)="openGasolineraDetailDialog()">Ver mas</button>
+
     <!--
     <button mat-raised-button [routerLink]="['/people/', getplanetId(personInput.url)]">Ver mas</button>
     <button mat-raised-button [routerLink]="['/planets/', getplanetId(personInput.homeworld)]">Ver planeta origen</button>

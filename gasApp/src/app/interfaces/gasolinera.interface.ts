@@ -7,12 +7,12 @@ export interface GasolineraResponse {
 
 export interface ListaEESSPrecio {
   cP:                             string;
-  dirección:                      string;
+  direccion:                      string;
   horario:                        string;
   localidad:                      string;
   margen:                         string;
   municipio:                      string;
-  precioBiodiesel:                string;
+  precioGasoleoB:                 string;
   precioBioetanol:                string;
   precioGasNaturalComprimido:     string;
   precioGasoleoA:                 string;
@@ -24,4 +24,14 @@ export interface ListaEESSPrecio {
   idMunicipio:                    string;
   idProvincia:                    string;
   idccaa:                         string;
+  ideess:                         string;
+  longitud:                       string;
+  latitud:                        string;
+}
+
+export interface Provincia {
+  IDPovincia:                     string;
+  IDCCAA:                         string;
+  Provincia:                      string;
+  CCAA:                           string;
 }

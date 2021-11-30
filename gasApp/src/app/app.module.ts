@@ -6,17 +6,22 @@ import { AppComponent } from './app.component';
 import { GasolineraListComponent } from './components/gasolinera-list/gasolinera-list.component';
 import { GasolineraItemComponent } from './components/gasolinera-item/gasolinera-item.component';
 import { GasolineraDetailComponent } from './components/gasolinera-detail/gasolinera-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialImportsModule } from './modules/material-imports.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogGasolineraDetailComponent } from './dialogs/dialog-gasolinera-detail-component/dialog-gasolinera-detail-component.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     GasolineraListComponent,
     GasolineraItemComponent,
-    GasolineraDetailComponent
+    GasolineraDetailComponent,
+    DialogGasolineraDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
 
+  ],
+  entryComponents: [
+    DialogGasolineraDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
