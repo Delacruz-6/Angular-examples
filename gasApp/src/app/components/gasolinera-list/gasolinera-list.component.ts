@@ -16,6 +16,7 @@ export class GasolineraListComponent implements OnInit {
   provincias !: Provincia[];
   gasolineraList !: ListaEESSPrecio[];
   idProvincia: String[] = [];
+  listaFullGasolineras  !: ListaEESSPrecio[];
 
   gasolineraListFiltrada !: ListaEESSPrecio[];
   constructor(private service : GasolineraService) { }
@@ -25,6 +26,7 @@ export class GasolineraListComponent implements OnInit {
       this.getProvincias();
       this.filterGasolinera();
       this.gasolineraList = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
+      this.listaFullGasolineras=this.gasolineraList;
       this.gasolineraListFiltrada = this.gasolineraList;
       console.log(this.gasolineraList);
     });
@@ -56,10 +58,11 @@ export class GasolineraListComponent implements OnInit {
     })
   }
 
-  formatLabel(value: number) {
-
-    return value + '€';
+  quitarFiltro(){
+    this.gasolineraListFiltrada = this.listaFullGasolineras;
   }
+
+
 
 
 

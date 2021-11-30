@@ -34,9 +34,8 @@ parseAnyToGasolineraListResponse(jsonString: string) {
   let jsonFinal: GasolineraResponse = JSON.parse(jsonStringReplaced);
   return jsonFinal.listaEESSPrecio;
 }
-
-getGasolinera(): Observable<GasolineraResponse>{
-  return this.http.get<GasolineraResponse>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/`)
+getGoogleMaps(direccion:String) {
+  return window.location.href=(`https://www.google.es/maps/search/${direccion}/`);
 }
 
 }

@@ -10,12 +10,14 @@
       <h3 class="title">Precios:</h3>
       <p>
         Gasoleo A: {{gasolineraInput?.precioGasoleoA}} € <br>
-        Gasoleo B: {{gasolineraInput?.precioGasoleoB}} € <br>
         Gasolina 95: {{gasolineraInput?.precioGasolina95E5}} € <br>
       </p>
     </div>
     <div fxLayoutAlign="end end">
-      <button mat-raised-button (click)="openGasolineraDetailDialog()">Ver mas</button>
+      <button mat-icon-button (click)="getGoogleMaps(gasolineraInput.direccion)">
+        <mat-icon>location_on</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openGasolineraDetailDialog()"><mat-icon>loupe</mat-icon></button>
     </div>
   </mat-card-content>
 </mat-card>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogGasolineraDetailComponent } from 'src/app/dialogs/dialog-gasolinera-detail-component/dialog-gasolinera-detail-component.component';
 import { ListaEESSPrecio } from 'src/app/interfaces/gasolinera.interface';
+import { GasolineraService } from 'src/app/services/gasolinera.service';
 
 @Component({
   selector: 'app-gasolinera-item',
@@ -11,7 +12,7 @@ import { ListaEESSPrecio } from 'src/app/interfaces/gasolinera.interface';
 export class GasolineraItemComponent implements OnInit {
   @Input() gasolineraInput !: ListaEESSPrecio;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private service : GasolineraService) { }
 
   ngOnInit(): void {
 
@@ -24,6 +25,10 @@ export class GasolineraItemComponent implements OnInit {
       width: '800px',
       data: { gasolinera: this.gasolineraInput }
     });
+  }
+
+  getGoogleMaps(direccion:String){
+    this.service.getGoogleMaps(direccion.replace(' ', '+'));
   }
 
 }
