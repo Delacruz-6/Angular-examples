@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gasapp-6e386": {
+      "hosting": {
+        "angular-gasApp-firebase": [
+          "gasapp-6e386"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gasapp-6e386"
+  }
+}
