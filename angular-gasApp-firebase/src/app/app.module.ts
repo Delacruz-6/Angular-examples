@@ -11,6 +11,12 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule, USE_DEVICE_LANGUAGE, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,11 +24,14 @@ import { AuthService } from './services/auth.service';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireAuthGuardModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-    AppRoutingModule
+    AppRoutingModule,
+
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

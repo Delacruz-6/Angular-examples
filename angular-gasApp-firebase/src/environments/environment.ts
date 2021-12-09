@@ -12,16 +12,7 @@ export const environment = {
     messagingSenderId: '686433861699',
     measurementId: 'G-W1NVSYHWZB',
   },
-  production: false,
-  firebaseConfig: {
-    apiKey: "AIzaSyCUFTtj-yF5t1mgPCTuYZrS1dRE5AM7JtU",
-    authDomain: "gasapp-6e386.firebaseapp.com",
-    projectId: "gasapp-6e386",
-    storageBucket: "gasapp-6e386.appspot.com",
-    messagingSenderId: "686433861699",
-    appId: "1:686433861699:web:3758c9ff76d98c9d5794f6",
-    measurementId: "G-K8ST0G1NS4"
-  }
+  production: false
 };
 
 /*
