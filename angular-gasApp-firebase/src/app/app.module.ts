@@ -11,6 +11,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 
 
@@ -24,6 +26,8 @@ import { MaterialImportsModule } from './modules/material-imports.module.tst';
 import { ListGasolineraComponent } from './components/list-gasolinera/list-gasolinera.component';
 import { DetailGasolineraComponent } from './dialogs/detail-gasolinera/detail-gasolinera.component';
 import { ItemGasolineraComponent } from './components/item-gasolinera/item-gasolinera.component';
+import { LoginComponent } from './dialogs/login/login.component';
+import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 
 
 @NgModule({
@@ -32,7 +36,9 @@ import { ItemGasolineraComponent } from './components/item-gasolinera/item-gasol
     SignInComponent,
     ListGasolineraComponent,
     DetailGasolineraComponent,
-    ItemGasolineraComponent
+    ItemGasolineraComponent,
+    LoginComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +49,7 @@ import { ItemGasolineraComponent } from './components/item-gasolinera/item-gasol
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSidenavModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
