@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
-import { FirebaseStorage  } from '@firebase/storage';
 import firebase from 'firebase/compat/app';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { doc } from '@firebase/firestore';
 import {  Usuarios } from 'src/app/models/usuario.interface';
 import { Observable } from 'rxjs';
 

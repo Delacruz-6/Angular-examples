@@ -1,0 +1,34 @@
+
+<mat-card class="example-card" >
+  <mat-card-title-group >
+    <mat-card-title class="title">{{gasolinera?.localidad}} || {{gasolinera?.provincia}}</mat-card-title>
+  </mat-card-title-group>
+
+  <mat-card-content class="flex-container">
+    <hr>
+    <div class="centrado">
+      <img src="http://motor.elpais.com/wp-content/uploads/2017/06/2017_06_25_foster.jpg"   height="400px" width="100%">
+    </div>
+    <hr>
+  </mat-card-content>
+  <mat-card-title-group >
+    <mat-card-subtitle class="subtitle">
+      <h2>Precios:</h2>
+      <p>
+        Gasoleo A: {{gasolinera?.precioGasoleoA}}€
+        <br>
+        Gasoleo B: {{gasolinera?.precioGasoleoB}}€
+        <br>
+        Gasolina 95 E5: {{gasolinera?.precioGasolina95E5}}€
+        <br>
+        Gasolina 95 E10: {{gasolinera?.precioGasolina95E10}}€
+        <br>
+        Bioetanol: {{gasolinera?.precioBioetanol}}€
+        <br>
+      </p>
+      <button mat-raised-button (click)="getGoogleMaps(gasolinera.direccion)">
+        <mat-icon>location_on</mat-icon> Como llegar
+      </button>
+    </mat-card-subtitle>
+  </mat-card-title-group>
+</mat-card>

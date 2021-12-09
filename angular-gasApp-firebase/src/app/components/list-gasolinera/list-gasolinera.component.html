@@ -1,0 +1,63 @@
+<div class="color">
+  <!--Option/select Provincias-->
+<mat-form-field appearance="fill">
+  <mat-label>Provincias</mat-label>
+  <mat-select  [(ngModel)]="idProvincia" name="provincia" multiple>
+    <mat-option *ngFor="let provincia of provincias" [value]="provincia.IDPovincia" (click)="getMunicipios(provincia.IDPovincia)">
+      {{provincia?.Provincia}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <!--Lista de municipios para selecionar varios de una misma provincia selecionada-->
+    <mat-form-field appearance="fill" *ngIf="municipios">
+      <mat-label>Municipios</mat-label>
+      <mat-select  [(ngModel)]="idMunicipio" name="municipio" multiple>
+        <mat-option *ngFor="let municipio of municipios" [value]="municipio.IDMunicipio" >
+          {{municipio?.Municipio}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  <!--Precio Min-->
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Min</mat-label>
+    <input matInput type="number" placeholder="0"step="0.1"  [(ngModel)]="precioMin">
+    <span matSuffix>€</span>
+  </mat-form-field>
+
+  <!--Precio Max-->
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Precio Max</mat-label>
+    <input matInput type="number" placeholder="0" step="0.1" [(ngModel)]="precioMax">
+    <span matSuffix>€</span>
+  </mat-form-field>
+
+  <!-- Funcionalidad pedida en el ejercicio aunque considero mas funcional la otra opción dado que no termino de comprobar con los ngIf si solo seleciona una provincia-->
+  <!--
+  <mat-form-field class="example-full-width" appearance="fill" *ngIf="municipios">
+    <mat-label>Municipios</mat-label>
+    <input type="text"
+           placeholder="Municipio"
+           aria-label="Municipios"
+           matInput
+           [(ngModel)]="idMunicipio"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" autoactivefirstoption  >
+      <mat-option *ngFor="let municipio of municipios" [value]="municipio.IDMunicipio" >
+        {{municipio.Municipio}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+-->
+
+
+</div>
+
+  <button mat-flat-button color="primary" (click)="filterGasolinera()" >Buscar</button>
+  <button mat-flat-button color="primary" (click)="quitarFiltro()" >Mostrar todo</button>
+
+<div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="start start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
+  <app-item-gasolinera *ngFor="let g of gasolineraListFiltrada" [gasolineraInput]="g"></app-item-gasolinera>
+</div>

@@ -1,5 +1,8 @@
 <p><button (click)="login()">Login</button></p>
 
+
 <ul>
-    <li *ngFor="let user of userList | async">{{user.email}}</li>
+    <li *ngFor="let user of userList | async">{{user.email}}
+      <img [src]="user.urlFoto" alt="Foto perfil">
+    </li>
 </ul>

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from '../components/sign-in/sign-in.component';
+import { ListGasolineraComponent } from '../components/list-gasolinera/list-gasolinera.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  {path: '', pathMatch: 'full', component: ListGasolineraComponent},
   { path: 'sign-in', component: SignInComponent },
 ];
 
