@@ -2,12 +2,8 @@
   <mat-sidenav #sidenav mode="push" class="side-menu">
     <h1>Menu</h1>
     <mat-list role="list">
-      <mat-list-item role="listitem"><a [routerLink]="['/movies-popular']"routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >movie_filter</mat-icon>Peliculas</a></mat-list-item>
-      <mat-list-item role="listitem"><a [routerLink]="['/people-popular']" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >person</mat-icon>Personas</a></mat-list-item>
-      <mat-list-item role="listitem"><a [routerLink]="['/playlist']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">queue_music</mat-icon>Playlists</a></mat-list-item>
-      <mat-list-item role="listitem"><a [routerLink]="['/cuenta']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">manage_accounts</mat-icon>Cuenta</a></mat-list-item>
-      <mat-list-item role="listitem"><a [routerLink]="['/favoritos']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">favorite</mat-icon>Peliculas favoritas</a></mat-list-item>
-
+      <mat-list-item role="listitem"><a [routerLink]="['']"routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >movie_filter</mat-icon>Gasolineras</a></mat-list-item>
+      <mat-list-item role="listitem"><a [routerLink]="['/favoritas']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">queue_music</mat-icon>Favoritas</a></mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item role="listitem" ><a (click)="loginOut()"><mat-icon class="sidenav-icon">logout</mat-icon> Salir</a></mat-list-item>
   </mat-list>
@@ -19,7 +15,7 @@
       <button mat-button (click)="sidenav.toggle()">
           <mat-icon >menu</mat-icon>
       </button>
-      <span>PopCorn</span>
+      <span>GasApp</span>
       <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/favoritos']" routerLinkActive="router-link-active" >
         <mat-icon>favorite</mat-icon>
