@@ -37,7 +37,7 @@ export class ItemGasolineraComponent implements OnInit {
   }
 
   addFavorite(){
-    if( this.authService.isLoggedIn()){
+    if( localStorage.getItem('email') != null){
       this.firestore.collection(COLLECTION_FAVORITES)
       .doc(this.gasolineraInput.ideess)
       .set({ localidad: this.gasolineraInput.localidad,
@@ -68,7 +68,7 @@ export class ItemGasolineraComponent implements OnInit {
 
 
   deleteFavorite(){
-    if( this.authService.isLoggedIn()){
+    if( localStorage.getItem('uid') != null){
       this.firestore.collection(COLLECTION_FAVORITES)
       .doc(this.gasolineraInput.ideess).delete();
     }else{

@@ -11,7 +11,11 @@ export class AuthService {
 
   logout() {
     this.auth.signOut();
-    // TODO sign out of offline app
+    localStorage.removeItem('email');
+    localStorage.removeItem('uid');
+    localStorage.removeItem('urlFoto');
+    localStorage.removeItem('nombre');
+
   }
 
     // Sign in with Google
@@ -26,7 +30,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-      if(this.auth.user != null){
+      if(localStorage.getItem('uid') != null){
         return false;
       }else{
         return true;
