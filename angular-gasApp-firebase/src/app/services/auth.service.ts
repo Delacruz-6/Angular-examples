@@ -26,7 +26,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-      if(this.auth.authState != null){
+      if(this.auth.user != null){
         return false;
       }else{
         return true;

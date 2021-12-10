@@ -32,10 +32,13 @@ export class SignInComponent implements OnInit {
       this.firestore.collection(COLLECTION_USERS).doc(resp?.user?.uid)
       .set({ nombre: resp.user?.displayName,
         email: resp.user?.email,
+        uid: resp.user?.uid,
         urlFoto: resp.user?.photoURL });
       localStorage.setItem('nombre', resp.user?.displayName? resp.user?.displayName: '');
       localStorage.setItem('urlFoto', resp.user?.photoURL? resp.user?.photoURL: '');
       localStorage.setItem('uid', resp.user?.uid? resp.user?.uid: '');
+      localStorage.setItem('email', resp.user?.email? resp.user?.email: '');
+    console.log(resp.user)
     });
 
   }

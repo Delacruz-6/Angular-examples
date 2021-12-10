@@ -17,11 +17,12 @@
       </button>
       <span>GasApp</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/favoritos']" routerLinkActive="router-link-active" >
+      <button mat-icon-button class="example-icon favorite-icon" [routerLink]="['/favoritas']" routerLinkActive="router-link-active" >
         <mat-icon>favorite</mat-icon>
       </button>
       <button mat-button class="example-icon" [routerLink]="['/cuenta']" routerLinkActive="router-link-active" >
-        <span> {{user?.nombre}}</span>
+        <img [src]="getUserImg()" alt="Foto perfil" width="30px">
+        <span> {{getUserEmail()}}</span>
       </button>
       <button mat-icon-button class="example-icon favorite-icon" (click)="loginOut()" >
         <mat-icon>power_settings_new</mat-icon>

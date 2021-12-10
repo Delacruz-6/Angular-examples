@@ -33,8 +33,16 @@ export class SideMenuComponent implements OnInit {
 
   }
 
+  getUserEmail(){
+    return localStorage.getItem('email')
+  }
+  getUserImg(){
+    return localStorage.getItem('urlFoto')
+  }
+
   loginOut(){
     this.authService.logout();
+    window.location.reload();
   }
 
 }
