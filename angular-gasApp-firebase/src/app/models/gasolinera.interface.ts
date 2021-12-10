@@ -39,3 +39,16 @@ export interface Municipio {
   Provincia:                      string;
   CCAA:                           string;
 }
+
+export interface GasolineraFav {
+  direccion:                      string;
+  localidad:                      string;
+  municipio:                      string;
+  precioGasoleoA:                 string;
+  precioGasolina95E10:            string;
+  precioGasolina95E5:             string;
+  precioGasolina98E5:             string;
+  provincia:                      string;
+  uid:                         string;
+}
+
