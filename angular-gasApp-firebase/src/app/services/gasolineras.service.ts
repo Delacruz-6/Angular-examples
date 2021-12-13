@@ -70,5 +70,25 @@ export class GasolinerasService {
     return this.firestore.collection(`usuarios/${userId}/favorites`).doc(docId).delete();
   }
 
+  SaveListGasolinera(nombre: string, descripcion: string){
+    let userId = localStorage.getItem('uid');
+    return this.firestore.collection(`usuarios/${userId}/favorites`).doc().set({
+      nombre: nombre,
+      descripcion: descripcion,
+      uid: localStorage.getItem('uid')
+    });
+  }
+  }
+/*
+  addGasolineraToList(gasolinera : GasolineraFav) {
+
+
+    return
+
+  }
+  */
+
+
+
 
 }

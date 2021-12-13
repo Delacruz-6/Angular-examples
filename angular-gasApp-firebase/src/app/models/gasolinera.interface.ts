@@ -49,8 +49,15 @@ export interface GasolineraFav {
   precioGasolina95E5:             string;
   precioGasolina98E5:             string;
   provincia:                      string;
-  uid:                         string;
-  id: string;
-  rotulo: string;
+  uid:                            string;
+  id:                             string;
+  rotulo:                         string;
+}
+
+
+export interface ListaDeGasolineras{
+  nombre:                         string,
+  descripcion:                    string,
+  GasolineraFav:                  GasolineraFav[]
 }
 
