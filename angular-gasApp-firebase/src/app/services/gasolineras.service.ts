@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GasolineraResponse, Municipio, Provincia } from '../models/gasolinera.interface';
+import { GasolineraFav, GasolineraResponse, ListaEESSPrecio, Municipio, Provincia } from '../models/gasolinera.interface';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GasolinerasService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,private firestore: AngularFirestore) { }
 
   getProvincias(): Observable<Provincia[]>{
     return this.http.get<Provincia[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/Provincias/`)
@@ -45,4 +46,29 @@ export class GasolinerasService {
   getMunicipios(idMunicipio: string): Observable<Municipio[]>{
     return this.http.get<Municipio[]>(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/MunicipiosPorProvincia/${idMunicipio}`);
   }
+
+  ///////////////
+  //FIREBASE
+  //////////////
+  addFavorite(gasolinera: ListaEESSPrecio) {
+    let userId = localStorage.getItem('uid');
+    return this.firestore.collection(`usuarios/${userId}/favorites`).doc(gasolinera.ideess).set({
+      id: gasolinera.ideess,
+      direccion: gasolinera.direccion,
+      localidad: gasolinera.localidad,
+      uid: localStorage.getItem('uid')
+    });
+  }
+
+  getFavorites(): Observable<GasolineraFav[]> {
+    let userId = localStorage.getItem('uid');
+    return this.firestore.collection<GasolineraFav>(`usuarios/${userId}/favorites`).valueChanges();
+  }
+
+  deleteFavorite(docId: string) {
+    let userId = localStorage.getItem('uid');
+    return this.firestore.collection(`usuarios/${userId}/favorites`).doc(docId).delete();
+  }
+
+
 }

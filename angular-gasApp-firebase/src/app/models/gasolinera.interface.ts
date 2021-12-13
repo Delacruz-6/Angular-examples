@@ -50,5 +50,7 @@ export interface GasolineraFav {
   precioGasolina98E5:             string;
   provincia:                      string;
   uid:                         string;
+  id: string;
+  rotulo: string;
 }
 

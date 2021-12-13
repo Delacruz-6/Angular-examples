@@ -1,8 +1,8 @@
 <div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="start start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
-  <div *ngFor="let g of gasolineraList | async">
+  <div *ngFor="let g of gasolineraList ">
 
     <mat-card class="main-card">
-      <div class="movie-image" (click)="openGasolineraDetailDialog()">
+      <div class="movie-image" (click)="openGasolineraDetailDialog(g)">
         <img src="http://motor.elpais.com/wp-content/uploads/2017/06/2017_06_25_foster.jpg"   height="200px" width="100%">
       </div>
       <mat-card-title>{{g?.localidad}}</mat-card-title>
@@ -14,7 +14,7 @@
             Gasoleo A: {{g?.precioGasoleoA}} € <br>
             Gasolina 95: {{g?.precioGasolina95E5}} € <br>
           </p>
-          <button mat-icon-button (click)="openGasolineraDetailDialog()"><mat-icon>loupe</mat-icon></button>
+          <button mat-icon-button (click)="openGasolineraDetailDialog(g)"><mat-icon>loupe</mat-icon></button>
           <button mat-icon-button (click)="deleteFavorite(g)"><mat-icon>delete</mat-icon></button>
         </div>
       </mat-card-content>

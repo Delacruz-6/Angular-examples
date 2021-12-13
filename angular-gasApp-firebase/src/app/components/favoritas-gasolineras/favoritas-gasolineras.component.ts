@@ -6,7 +6,7 @@ import { GasolinerasService } from 'src/app/services/gasolineras.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailGasolineraComponent } from 'src/app/dialogs/detail-gasolinera/detail-gasolinera.component';
-const COLLECTION_FAVORITES='favorites';
+import { LoginComponent } from 'src/app/dialogs/login/login.component';
 
 
 @Component({
@@ -16,7 +16,7 @@ const COLLECTION_FAVORITES='favorites';
 })
 export class FavoritasGasolinerasComponent implements OnInit {
 
-  gasolineraList!: Observable<GasolineraFav[]>;
+  gasolineraList : GasolineraFav[] = [];
 
 
   constructor(private service : GasolinerasService,
@@ -29,20 +29,34 @@ export class FavoritasGasolinerasComponent implements OnInit {
   }
 
   getGasolinerasList() {
-    this.gasolineraList = this.firestore.collection<GasolineraFav>(COLLECTION_FAVORITES).valueChanges();
-  }
+    this.service.getFavorites().subscribe(resp =>  {
+      this.gasolineraList = resp;
+    });  }
 
-  openGasolineraDetailDialog( ){
+  openGasolineraDetailDialog(gasolineraFav :GasolineraFav ){
     this.dialog.open(DetailGasolineraComponent, {
       height: '660px',
       width: '800px',
-      data: { gasolinera: this.gasolineraList }
+      data: { gasolinera: gasolineraFav }
     });
   }
-  deleteFavorite(gasolinera :GasolineraFav ){
-    console.log(gasolinera)
-    this.firestore.collection(COLLECTION_FAVORITES)
-    .doc(gasolinera.uid).delete();
+
+
+  openLoginDialog(){
+    this.dialog.open(LoginComponent,{
+      width: '400px',
+      disableClose: true,
+
+    })
   }
 
+  deleteFavorite(gasolinera :GasolineraFav ){
+    if( localStorage.getItem('uid') != null){
+      this.service.deleteFavorite(gasolinera.id).then(resp => {
+        alert(`eliminada la gasolinera ${gasolinera.rotulo}`);
+      });
+    }else{
+      this.openLoginDialog();
+    }
+  }
 }
