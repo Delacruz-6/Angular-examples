@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GasolineraFav, GasolineraResponse, ListaEESSPrecio, Municipio, Provincia } from '../models/gasolinera.interface';
+import { GasolineraFav, GasolineraResponse, ListaDeGasolineras, ListaEESSPrecio, Municipio, Provincia } from '../models/gasolinera.interface';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -70,15 +70,34 @@ export class GasolinerasService {
     return this.firestore.collection(`usuarios/${userId}/favorites`).doc(docId).delete();
   }
 
-  SaveListGasolinera(nombre: string, descripcion: string){
+
+  SaveListGasolinera(idLista: string, descripcion: string, gasolinera: ListaEESSPrecio){
     let userId = localStorage.getItem('uid');
-    return this.firestore.collection(`usuarios/${userId}/favorites`).doc().set({
-      nombre: nombre,
+    return this.firestore.collection(`usuarios/${userId}/listas`).doc(gasolinera.ideess).set({
+      nombre: idLista,
       descripcion: descripcion,
       uid: localStorage.getItem('uid')
     });
   }
+
+  addGasolineraToList(idLista : string, gasolinera: ListaEESSPrecio){
+    let userId = localStorage.getItem('uid');
+    this.firestore.collection(`usuarios/${userId}/listas/${idLista}/gasolineras`).doc(gasolinera.ideess).set({
+      id: gasolinera.ideess,
+      direccion: gasolinera.direccion,
+      localidad: gasolinera.localidad,
+      uid: localStorage.getItem('uid')
+    });
   }
+
+  getLitsGasolineras(): Observable<ListaDeGasolineras[]> {
+    let userId = localStorage.getItem('uid');
+    return this.firestore.collection<ListaDeGasolineras>(`usuarios/${userId}/listas`).valueChanges();
+  }
+
+
+  }
+
 /*
   addGasolineraToList(gasolinera : GasolineraFav) {
 
@@ -91,4 +110,4 @@ export class GasolinerasService {
 
 
 
-}
+

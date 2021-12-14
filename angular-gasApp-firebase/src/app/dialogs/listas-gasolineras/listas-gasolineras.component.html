@@ -1,0 +1,23 @@
+<div>
+  <h3>{{gasolinera?.localidad}} {{gasolinera?.municipio}}</h3>
+</div>
+<div>
+  <mat-form-field >
+    <mat-label>Lista de gasolineras</mat-label>
+    <mat-select [(ngModel)]="selectedListNombre" >
+      <mat-option *ngFor="let list of listGasolineras" [value]="list.id"   >{{list?.nombre}}  </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+    <h3>Crear lista</h3>
+    <mat-label for="nombre">Nombre</mat-label>
+    <input matInput type="text" placeholder="Nombre de a lista" id="nombre" [(ngModel)]="listNueva.nombre" name="nombre">
+    <mat-label for="descripcion">Descripción</mat-label>
+    <textarea matInput type="textarea" placeholder="Describe la lista..." id="descripcion" [(ngModel)]="listNueva.descripcion" name="descripcion"></textarea>
+</div>
+
+<div >
+  <button  mat-raised-button color="accent" (click)="addGasolineraList()" type="submit"  > Guardar lista</button>
+  <button  mat-raised-button color="accent" (click)="addNewList()" type="submit"  >  Crear lista</button>
+</div>

@@ -61,3 +61,6 @@ export interface ListaDeGasolineras{
   GasolineraFav:                  GasolineraFav[]
 }
 
+
+
+

@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { GasolinerasService } from 'src/app/services/gasolineras.service';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ListasGasolinerasComponent } from 'src/app/dialogs/listas-gasolineras/listas-gasolineras.component';
 
 const COLLECTION_FAVORITES='favorites';
 @Component({
@@ -37,7 +38,23 @@ export class ItemGasolineraComponent implements OnInit {
     });
   }
 
+  openPlaylist(){
+    this.dialog.open(ListasGasolinerasComponent, {
+      height: '660px',
+      width: '800px',
+      data: { gasolinera: this.gasolineraInput }
+    });
+  }
+
   addFavorite(){
+    if( localStorage.getItem('email') != null){
+      this.service.addFavorite(this.gasolineraInput);
+    }else{
+      this.openLoginDialog();
+    }
+  }
+
+  addPlaylist(){
     if( localStorage.getItem('email') != null){
       this.service.addFavorite(this.gasolineraInput);
     }else{

@@ -29,6 +29,8 @@ import { ItemGasolineraComponent } from './components/item-gasolinera/item-gasol
 import { LoginComponent } from './dialogs/login/login.component';
 import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 import { FavoritasGasolinerasComponent } from './components/favoritas-gasolineras/favoritas-gasolineras.component';
+import { ListasGasolinerasComponent } from './dialogs/listas-gasolineras/listas-gasolineras.component';
+import { ListasGasComponent } from './components/listas-gas/listas-gas.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { FavoritasGasolinerasComponent } from './components/favoritas-gasolinera
     ItemGasolineraComponent,
     LoginComponent,
     SideMenuComponent,
-    FavoritasGasolinerasComponent
+    FavoritasGasolinerasComponent,
+    ListasGasolinerasComponent,
+    ListasGasComponent
   ],
   imports: [
     BrowserModule,
