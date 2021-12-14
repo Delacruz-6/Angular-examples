@@ -34,30 +34,11 @@
     <span matSuffix>€</span>
   </mat-form-field>
 
-  <!-- Funcionalidad pedida en el ejercicio aunque considero mas funcional la otra opción dado que no termino de comprobar con los ngIf si solo seleciona una provincia-->
-  <!--
-  <mat-form-field class="example-full-width" appearance="fill" *ngIf="municipios">
-    <mat-label>Municipios</mat-label>
-    <input type="text"
-           placeholder="Municipio"
-           aria-label="Municipios"
-           matInput
-           [(ngModel)]="idMunicipio"
-           [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" autoactivefirstoption  >
-      <mat-option *ngFor="let municipio of municipios" [value]="municipio.IDMunicipio" >
-        {{municipio.Municipio}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
--->
-
-
 </div>
 
   <button mat-flat-button color="primary" (click)="filterGasolinera()" >Buscar</button>
   <button mat-flat-button color="primary" (click)="quitarFiltro()" >Mostrar todo</button>
 
 <div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="start start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
-  <app-item-gasolinera *ngFor="let g of gasolineraListFiltrada" [gasolineraInput]="g"></app-item-gasolinera>
+  <app-item-gasolinera *ngFor="let g of gasolineraListFiltrada " [gasolineraInput]="g"></app-item-gasolinera>
 </div>

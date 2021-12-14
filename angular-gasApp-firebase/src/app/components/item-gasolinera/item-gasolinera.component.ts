@@ -25,8 +25,6 @@ export class ItemGasolineraComponent implements OnInit {
     private firestore : AngularFirestore) { }
 
   ngOnInit(): void {
-    console.log(this.gasolineraInput);
-
 
   }
 

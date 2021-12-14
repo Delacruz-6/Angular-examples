@@ -31,9 +31,11 @@ export class ListGasolineraComponent implements OnInit {
       this.listaFullGasolineras = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
       this.gasolineraList = this.service.parseAnyToGasolineraListResponse(JSON.stringify(resp));
       this.gasolineraListFiltrada = this.gasolineraList;
+      //this.gasolineraListFiltrada.splice(1,5);
       this.quitarFiltro();
       console.log(this.gasolineraList);
     });
+
   }
 
   filterGasolinera(){

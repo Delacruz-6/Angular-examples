@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { ListaDeGasolinerasDto } from 'src/app/models/listGasolinera.interface';
+import { GasolinerasService } from 'src/app/services/gasolineras.service';
 
 import { ListasFirabaseService } from 'src/app/services/listas-firabase.service';
 
@@ -13,7 +14,8 @@ import { ListasFirabaseService } from 'src/app/services/listas-firabase.service'
 export class ListasGasComponent implements OnInit {
   listasList!: ListaDeGasolinerasDto[];
 
-  constructor(private listasFirebaseService: ListasFirabaseService) { }
+  constructor(private listasFirebaseService: ListasFirabaseService,
+    private service : GasolinerasService) { }
 
   ngOnInit(): void {
     this.getAllLists();
@@ -30,6 +32,11 @@ export class ListasGasComponent implements OnInit {
     ).subscribe(data => {
       this.listasList = data;
     });
+  }
+
+  deletePlaylist(lista : ListaDeGasolinerasDto){
+    let idLista:string = `${lista.id}`;
+    this.service.deletePlaylist(idLista);
   }
 
 }

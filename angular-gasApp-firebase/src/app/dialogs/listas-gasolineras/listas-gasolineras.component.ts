@@ -32,16 +32,7 @@ export class ListasGasolinerasComponent implements OnInit {
   private firabaseService: ListasFirabaseService) { }
 
   ngOnInit(): void {
-    this.service.getGasolineras().subscribe( resp => {
-      this.listGasolineras=resp;
-      this.gasolineras= resp;
-      this.listNueva.nombre=''
-
-    })
-    this.listGasolineras;
-    //this.listasList;
     this.getAllLists();
-
   }
 
   addGasolineraList(){

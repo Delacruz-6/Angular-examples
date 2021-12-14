@@ -25,7 +25,7 @@
 }
 a, a:active, a:hover, a:visited {
   text-decoration: none;
-  color: #f0f0f0;
+  color: #555555;
   line-height: 20px;
 }
 .example-spacer {

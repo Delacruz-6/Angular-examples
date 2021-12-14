@@ -90,22 +90,13 @@ export class GasolinerasService {
     });
   }
 
-  getLitsGasolineras(): Observable<ListaDeGasolineras[]> {
+  deletePlaylist(docId: string) {
     let userId = localStorage.getItem('uid');
-    return this.firestore.collection<ListaDeGasolineras>(`usuarios/${userId}/listas`).valueChanges();
+    return this.firestore.collection(`usuarios/${userId}/listas`).doc(docId).delete();
   }
 
 
   }
-
-/*
-  addGasolineraToList(gasolinera : GasolineraFav) {
-
-
-    return
-
-  }
-  */
 
 
 
