@@ -92,7 +92,9 @@ export class GasolinerasService {
 
   deletePlaylist(docId: string) {
     let userId = localStorage.getItem('uid');
-    return this.firestore.collection(`usuarios/${userId}/listas`).doc(docId).delete();
+    this.firestore.collection(`usuarios/${userId}/listas`).doc(docId).delete();
+    this.firestore.collection(`usuarios/${userId}/listas/${docId}/gasolineras`).doc(docId).delete();
+
   }
 
 

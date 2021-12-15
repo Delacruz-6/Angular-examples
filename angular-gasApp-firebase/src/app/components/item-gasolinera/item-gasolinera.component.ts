@@ -40,7 +40,8 @@ export class ItemGasolineraComponent implements OnInit {
     this.dialog.open(ListasGasolinerasComponent, {
       height: '660px',
       width: '800px',
-      data: { gasolinera: this.gasolineraInput }
+      data: { gasolinera: this.gasolineraInput },
+      disableClose: true,
     });
   }
 
@@ -64,7 +65,6 @@ export class ItemGasolineraComponent implements OnInit {
     this.dialog.open(LoginComponent,{
       width: '400px',
       disableClose: true,
-
     })
   }
 
