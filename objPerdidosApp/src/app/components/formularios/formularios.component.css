@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+h1{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.space-top{
+  margin-top: 20px;
+}
+.mapa{
+  margin-bottom: 20px;
+}

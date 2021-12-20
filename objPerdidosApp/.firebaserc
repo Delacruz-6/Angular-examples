@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "objperdidosapp": {
+      "hosting": {
+        "objPerdidosApp": [
+          "objperdidosapp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "objperdidosapp"
+  }
+}

@@ -1,0 +1,63 @@
+
+
+
+
+<div fxLayout="row" fxLayoutAlign="space-around center" class="space-top">
+
+  <div  fxLayout="column" fxLayoutAlign="space-around center">
+    <h1>Formulario objeto perdido</h1>
+    <mat-form-field appearance="fill">
+      <mat-label for="nombre">Nombre</mat-label>
+      <input matInput type="text" placeholder="Llaves del coche..." id="nombre" [(ngModel)]="nObjetoPer.nombre" name="nombre">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="nObjetoPer.categoria" >
+        <mat-option *ngFor="let c of categorias" [value]="c"   >{{c}}  </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="descripcion">Descripción</mat-label>
+      <textarea matInput type="textarea" placeholder="Describe el objeto..." id="descripcion" [(ngModel)]="nObjetoPer.descripcion" name="descripcion"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="addObjetoPerdido()">Enviar</button>
+
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <h3> <strong> Añada la localización moviendo la flecha </strong> </h3>
+    <div *ngIf="apiLoaded | async" class="mapa">
+        <google-map
+          [center]="fundacionDonBoscoLatLng">
+          <map-marker
+                  (mapDragend)="updateLocationMarker($event)"
+                  [position]="fundacionDonBoscoLatLng"
+                  [options]="markerOptions"></map-marker>
+        </google-map>
+    </div>
+
+  </div>
+  <div  fxLayout="column" fxLayoutAlign="space-around center">
+    <h1>Formulario objeto encontrado</h1>
+    <mat-form-field appearance="fill">
+      <mat-label for="nombre2">Nombre</mat-label>
+      <input matInput type="text" placeholder="Reloj de oro..." id="nombre2" [(ngModel)]="nObjetoEnc.nombre" name="nombre2">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="nObjetoEnc.categoria" >
+        <mat-option *ngFor="let c of categorias" [value]="c"   >{{c}}  </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="descripcion2">Descripción</mat-label>
+      <textarea matInput type="textarea" placeholder="Describe el objeto ..." id="descripcion2" [(ngModel)]="nObjetoEnc.descripcion" name="descripcion2"></textarea>
+    </mat-form-field>
+    <button mat-raised-button (click)="addObjetoEncontrado()">Enviar</button>
+
+  </div>
+
+
+</div>
+

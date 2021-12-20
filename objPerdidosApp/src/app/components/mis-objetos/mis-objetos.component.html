@@ -1,0 +1,17 @@
+<div fxLayout="row wrap" fxLayout.sm="colunm" fxLayoutAlign="start start" fxLayoutAlign.sm="center center" fxLayoutGap="20px grid" fxFlexFill >
+  <div *ngFor="let item of listasList">
+    <mat-card class="main-card">
+      <mat-card-title>{{item?.nombre}}</mat-card-title>
+      <mat-card-subtitle>{{item?.localizacion}}2</mat-card-subtitle>
+      <mat-card-content fxLayout="row wrap" fxLayout.sm="colunm">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <p>
+            <span>Descripcion:</span><br>{{item?.descripcion}}
+          </p>
+
+          <button mat-icon-button (click)="deleteObjetoPerdido(item)"><mat-icon>delete</mat-icon></button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
