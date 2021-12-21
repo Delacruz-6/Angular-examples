@@ -12,9 +12,10 @@ const loggedInV = () => loggedIn;
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: ListGasolineraComponent},
+  {path: 'gasolineras', pathMatch: 'full', component: ListGasolineraComponent},
   { path: 'sign-in',pathMatch: 'full', component: SignInComponent },
   { path: 'favoritas',pathMatch: 'full', component: FavoritasGasolinerasComponent, canActivate: [AngularFireAuthGuard] , data: { authGuardPipe: loggedInV } },
-  { path: 'listas', pathMatch: 'full', component: ListasGasComponent },
+  { path: 'listas', pathMatch: 'full', component: ListasGasComponent , canActivate: [AngularFireAuthGuard] , data: { authGuardPipe: loggedInV }},
 ];
 
 @NgModule({

@@ -4,8 +4,8 @@
 <div>
   <mat-form-field >
     <mat-label>Lista de gasolineras</mat-label>
-    <mat-select [(ngModel)]="selectedListNombre" >
-      <mat-option *ngFor="let list of listGasolineras" [value]="list.id"   >{{list?.nombre}}  </mat-option>
+    <mat-select [(ngModel)]="selectedListId" >
+      <mat-option *ngFor="let list of listGasolineras" [value]="list.id">  {{list?.nombre}}  </mat-option>
     </mat-select>
   </mat-form-field>
 </div>

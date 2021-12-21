@@ -13,7 +13,7 @@ export class ObjetosPerService {
 
   constructor(private firestore: AngularFirestore) {
     let userId = localStorage.getItem('uid');
-    this.listasRef = this.firestore.collection(`usuarios/${userId}/objetosPerdidos`);
+    this.listasRef = this.firestore.collection(`objetosPerdidos`);
     console.log(this.listasRef)
   }
 
@@ -23,10 +23,5 @@ export class ObjetosPerService {
     return this.listasRef;
   }
 
-  deleteObjetoPerdido(docId: string) {
-    let userId = localStorage.getItem('uid');
-    this.firestore.collection(`usuarios/${userId}/objetosPerdidos`).doc(docId).delete();
-
-  }
 
 }

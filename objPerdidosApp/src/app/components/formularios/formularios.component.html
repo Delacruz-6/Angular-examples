@@ -26,7 +26,14 @@
   </div>
 
   <div fxLayout="column" fxLayoutAlign="space-around center">
-    <h3> <strong> Añada la localización moviendo la flecha </strong> </h3>
+    <h3><strong> Añada la localización moviendo la flecha o introduciendo una dirección</strong> </h3>
+    <mat-form-field appearance="fill">
+      <mat-label for="nombre">Localización</mat-label>
+      <input matInput type="text" placeholder="Conde de bustillo 17, Sevilla..."[(ngModel)]="address" />
+    </mat-form-field>
+    <div>
+      <button mat-raised-button (click)="searchAddress()" class="space-bottom">Localizar</button>
+    </div>
     <div *ngIf="apiLoaded | async" class="mapa">
         <google-map
           [center]="fundacionDonBoscoLatLng">
@@ -41,8 +48,8 @@
   <div  fxLayout="column" fxLayoutAlign="space-around center">
     <h1>Formulario objeto encontrado</h1>
     <mat-form-field appearance="fill">
-      <mat-label for="nombre2">Nombre</mat-label>
-      <input matInput type="text" placeholder="Reloj de oro..." id="nombre2" [(ngModel)]="nObjetoEnc.nombre" name="nombre2">
+      <mat-label for="nombre">Nombre</mat-label>
+      <input matInput type="text" placeholder="Reloj de oro..." id="nombre" [(ngModel)]="nObjetoEnc.nombre" name="nombre">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Categoria</mat-label>
@@ -51,8 +58,8 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label for="descripcion2">Descripción</mat-label>
-      <textarea matInput type="textarea" placeholder="Describe el objeto ..." id="descripcion2" [(ngModel)]="nObjetoEnc.descripcion" name="descripcion2"></textarea>
+      <mat-label for="descripcion">Descripción</mat-label>
+      <textarea matInput type="textarea" placeholder="Describe el objeto ..." id="descripcion" [(ngModel)]="nObjetoEnc.descripcion" name="descripcion"></textarea>
     </mat-form-field>
     <button mat-raised-button (click)="addObjetoEncontrado()">Enviar</button>
 

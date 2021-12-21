@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="push" class="side-menu">
     <h1>Menu</h1>
     <mat-list role="list">
-      <mat-list-item role="listitem"><a [routerLink]="['']"routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >local_gas_station</mat-icon>Gasolineras</a></mat-list-item>
+      <mat-list-item role="listitem"><a [routerLink]="['/gasolineras']"routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu" >local_gas_station</mat-icon>Gasolineras</a></mat-list-item>
       <mat-list-item role="listitem"><a [routerLink]="['/favoritas']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">favorite_border</mat-icon>Favoritas</a></mat-list-item>
       <mat-list-item role="listitem"><a [routerLink]="['/listas']" routerLinkActive="router-link-active" (click)="sidenav.toggle()"><mat-icon class="icon-menu">list_alt</mat-icon>Listas</a></mat-list-item>
 

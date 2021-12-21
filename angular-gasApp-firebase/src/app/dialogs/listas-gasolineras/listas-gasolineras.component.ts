@@ -21,7 +21,7 @@ export class ListasGasolinerasComponent implements OnInit {
   listGasolineras!: ListaDeGasolinerasDto[];
   listNueva = new ListaDeGasolinerasDto() ;
 
-  selectedListNombre !: string;
+  selectedListId !: string;
   gasolinera !: ListaEESSPrecio;
 
   gasolineras !: ListaEESSPrecio[];
@@ -36,12 +36,12 @@ export class ListasGasolinerasComponent implements OnInit {
   }
 
   addGasolineraList(){
-    this.service.addGasolineraToList(this.selectedListNombre, this.data.gasolinera);
+    this.service.addGasolineraToList(this.selectedListId, this.data.gasolinera);
   }
 
   addNewList(){
     if(this.listNueva.nombre && this.listNueva.descripcion){
-      this.service.SaveListGasolinera(this.listNueva.nombre , this.listNueva.descripcion,this.data.gasolinera);
+      this.service.SaveListGasolinera(this.listNueva?.nombre , this.listNueva?.descripcion,this.data.gasolinera);
       this.service.addGasolineraToList(this.data.gasolinera.ideess,this.data.gasolinera)
     }
     else{

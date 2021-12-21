@@ -32,9 +32,5 @@ export class MisObjetosComponent implements OnInit {
     });
   }
 
-  deleteObjetoPerdido(lista : ObjetoPerdidoDto){
-    let idLista:string = `${lista.nombre}`;
-    this.service.deleteObjetoPerdido(idLista);
-  }
 
 }

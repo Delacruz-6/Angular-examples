@@ -71,10 +71,10 @@ export class GasolinerasService {
   }
 
 
-  SaveListGasolinera(idLista: string, descripcion: string, gasolinera: ListaEESSPrecio){
+  SaveListGasolinera(nombre: string, descripcion: string, gasolinera: ListaEESSPrecio){
     let userId = localStorage.getItem('uid');
     return this.firestore.collection(`usuarios/${userId}/listas`).doc(gasolinera.ideess).set({
-      nombre: idLista,
+      nombre: nombre,
       descripcion: descripcion,
       uid: localStorage.getItem('uid')
     });

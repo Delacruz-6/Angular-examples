@@ -29,13 +29,15 @@ export class ObjetosService {
     return this.listasRefPer;
   }
 
-  addObjPerdido(nombre: string, descripcion :string, localizacion: string, categoria: string) {
+  addObjPerdido(nombre: string, descripcion :string, localizacion: string, longitud: string, latitud: string ,categoria: string) {
     let userId = localStorage.getItem('uid');
     if(userId != null){
-      return this.firestore.collection(`usuarios/${userId}/objetoPerdido`).doc(nombre).set({
+      return this.firestore.collection(`objetoPerdido`).doc(nombre).set({
         nombre: nombre,
         categoria: categoria,
         descripcion : descripcion,
+        latitud : latitud,
+        longitud : longitud,
         localizacion : localizacion,
         uid: localStorage.getItem('uid')
       });
@@ -43,13 +45,15 @@ export class ObjetosService {
     return ;
   }
 
-  addObjEncontrado(nombre: string, descripcion :string, localizacion: string, categoria: string) {
+  addObjEncontrado(nombre: string, descripcion :string, localizacion: string, longitud: string, latitud: string ,categoria: string) {
     let userId = localStorage.getItem('uid');
     if(userId != null){
-      return this.firestore.collection(`usuarios/${userId}/objetoEncontrado`).doc(nombre).set({
+      return this.firestore.collection(`objetoEncontrado`).doc(nombre).set({
         nombre: nombre,
         categoria: categoria,
         descripcion : descripcion,
+        latitud : latitud,
+        longitud : longitud,
         localizacion : localizacion,
         uid: localStorage.getItem('uid')
       });
