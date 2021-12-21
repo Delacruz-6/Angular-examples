@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Observable } from 'rxjs';
 import { Usuarios } from 'src/app/interfaces/usuario.interface';
+import { Router } from '@angular/router';
 
 
 const COLLECTION_USERS = 'usuarios';
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(public auth: AngularFireAuth, private firestore: AngularFirestore) {
+  constructor(public auth: AngularFireAuth, private firestore: AngularFirestore, private router : Router) {
   }
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('urlFoto', resp.user?.photoURL? resp.user?.photoURL: '');
       localStorage.setItem('uid', resp.user?.uid? resp.user?.uid: '');
       localStorage.setItem('email', resp.user?.email? resp.user?.email: '');
+      this.router.navigate(['formulario'])
     console.log(resp.user)
     });
 

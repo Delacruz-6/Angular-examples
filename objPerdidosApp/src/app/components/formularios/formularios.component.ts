@@ -81,6 +81,8 @@ export class FormulariosComponent implements OnInit {
     }
     this.objService.addObjPerdido(this.nObjetoPer.nombre,this.nObjetoPer.descripcion,
       this.nObjetoPer.localizacion,this.nObjetoPer.longitud,this.nObjetoPer.latitud,this.nObjetoPer.categoria);
+    this.objService.addObjUserPerdido(this.nObjetoPer.nombre,this.nObjetoPer.descripcion,
+      this.nObjetoPer.localizacion,this.nObjetoPer.longitud,this.nObjetoPer.latitud,this.nObjetoPer.categoria);
   }
 
   addObjetoEncontrado(){

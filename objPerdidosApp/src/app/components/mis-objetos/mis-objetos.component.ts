@@ -13,24 +13,16 @@ export class MisObjetosComponent implements OnInit {
 
   listasList!: ObjetoPerdidoDto[];
 
-  constructor(private service: ObjetosPerService) { }
+  constructor( private objService : ObjetosService) { }
 
   ngOnInit(): void {
-    this.getAllLists();
-    console.log(this.getAllLists())
+    this.getMisObjetosPerdidosList();
+    console.log(this.getMisObjetosPerdidosList())
   }
 
-  getAllLists(): void {
-    this.service.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.listasList = data;
-    });
-  }
-
+  getMisObjetosPerdidosList() {
+    this.objService.getAllPerdidos().subscribe(resp =>  {
+      this.listasList = resp;
+    });  }
 
 }
